@@ -147,11 +147,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountCharts.cs">
+    <Compile Include="FormAccountCharts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AccountCharts.Designer.cs">
-      <DependentUpon>AccountCharts.cs</DependentUpon>
+    <Compile Include="FormAccountCharts.Designer.cs">
+      <DependentUpon>FormAccountCharts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCar.Designer.cs">
+      <DependentUpon>FormCar.cs</DependentUpon>
     </Compile>
     <Compile Include="FormCars.cs">
       <SubType>Form</SubType>
@@ -189,6 +195,12 @@
     <Compile Include="FormServices.Designer.cs">
       <DependentUpon>FormServices.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSubdivision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSubdivision.Designer.cs">
+      <DependentUpon>FormSubdivision.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSubdivisions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,11 +209,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AccountCharts.resx">
-      <DependentUpon>AccountCharts.cs</DependentUpon>
+    <EmbeddedResource Include="FormAccountCharts.resx">
+      <DependentUpon>FormAccountCharts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCar.resx">
+      <DependentUpon>FormCar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCars.resx">
       <DependentUpon>FormCars.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCustomers.resx">
+      <DependentUpon>FormCustomers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -211,6 +229,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSeries.resx">
       <DependentUpon>FormSeries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSubdivision.resx">
+      <DependentUpon>FormSubdivision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSubdivisions.resx">
+      <DependentUpon>FormSubdivisions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -29,80 +29,84 @@ namespace TIP_var12
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonChange = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.textBoxSeries = new System.Windows.Forms.TextBox();
+            this.labelSeries = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(26, 66);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(549, 217);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Location = new System.Drawing.Point(26, 66);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.Size = new System.Drawing.Size(549, 217);
+            this.dataGridView.TabIndex = 0;
             // 
-            // button1
+            // buttonAdd
             // 
-            this.button1.Location = new System.Drawing.Point(318, 23);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonAdd.Location = new System.Drawing.Point(318, 23);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdd.TabIndex = 1;
+            this.buttonAdd.Text = "Добавить";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // button2
+            // buttonChange
             // 
-            this.button2.Location = new System.Drawing.Point(399, 23);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(95, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Редактировать";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonChange.Location = new System.Drawing.Point(399, 23);
+            this.buttonChange.Name = "buttonChange";
+            this.buttonChange.Size = new System.Drawing.Size(95, 23);
+            this.buttonChange.TabIndex = 2;
+            this.buttonChange.Text = "Редактировать";
+            this.buttonChange.UseVisualStyleBackColor = true;
+            this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
             // 
-            // button3
+            // buttonDelete
             // 
-            this.button3.Location = new System.Drawing.Point(500, 23);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Удалить";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonDelete.Location = new System.Drawing.Point(500, 23);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.TabIndex = 3;
+            this.buttonDelete.Text = "Удалить";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
-            // textBox1
+            // textBoxSeries
             // 
-            this.textBox1.Location = new System.Drawing.Point(137, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(175, 20);
-            this.textBox1.TabIndex = 4;
+            this.textBoxSeries.Location = new System.Drawing.Point(137, 23);
+            this.textBoxSeries.Name = "textBoxSeries";
+            this.textBoxSeries.Size = new System.Drawing.Size(175, 20);
+            this.textBoxSeries.TabIndex = 4;
             // 
-            // label1
+            // labelSeries
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Серия автомобиля:";
+            this.labelSeries.AutoSize = true;
+            this.labelSeries.Location = new System.Drawing.Point(26, 26);
+            this.labelSeries.Name = "labelSeries";
+            this.labelSeries.Size = new System.Drawing.Size(105, 13);
+            this.labelSeries.TabIndex = 5;
+            this.labelSeries.Text = "Серия автомобиля:";
             // 
             // FormSeries
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(598, 295);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.labelSeries);
+            this.Controls.Add(this.textBoxSeries);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.buttonChange);
+            this.Controls.Add(this.buttonAdd);
+            this.Controls.Add(this.dataGridView);
             this.Name = "FormSeries";
             this.Text = "Серия";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.FormSeries_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,11 +114,11 @@ namespace TIP_var12
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonChange;
+        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.TextBox textBoxSeries;
+        private System.Windows.Forms.Label labelSeries;
     }
 }

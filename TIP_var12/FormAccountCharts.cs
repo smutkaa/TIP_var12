@@ -12,10 +12,10 @@ using TIP_var12BusinessLogic.BusinessLogic;
 
 namespace TIP_var12
 {
-	public partial class AccountCharts : Form
+	public partial class FormAccountCharts : Form
 	{
         private readonly AccountChartLogic _logicAC;
-        public AccountCharts(AccountChartLogic logicAC)
+        public FormAccountCharts(AccountChartLogic logicAC)
 		{
 			InitializeComponent();
 

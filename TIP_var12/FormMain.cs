@@ -27,7 +27,7 @@ namespace TIP_var12
 
 		private void планСчетовToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var form = Container.Resolve<AccountCharts>();
+			var form = Container.Resolve<FormAccountCharts>();
 			form.ShowDialog();
 		}
 	}

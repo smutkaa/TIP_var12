@@ -1,7 +1,7 @@
 ﻿
 namespace TIP_var12
 {
-	partial class AccountCharts
+	partial class FormAccountCharts
 	{
 		/// <summary>
 		/// Required designer variable.
