@@ -30,5 +30,41 @@ namespace TIP_var12
 			var form = Container.Resolve<FormAccountCharts>();
 			form.ShowDialog();
 		}
-	}
+
+        private void серияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormSeries>();
+            form.ShowDialog();
+        }
+
+        private void автомобилиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormCars>();
+            form.ShowDialog();
+        }
+
+        private void поставщикToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormProviders>();
+            form.ShowDialog();
+        }
+
+        private void покупательToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<Form>();
+            form.ShowDialog();
+        }
+
+        private void подразделенияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormCustomers>();
+            form.ShowDialog();
+        }
+
+        private void услугиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormSubdivisions>();
+            form.ShowDialog();
+        }
+    }
 }

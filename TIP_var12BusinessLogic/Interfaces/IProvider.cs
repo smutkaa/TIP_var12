@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TIP_var12BusinessLogic.BindingModel;
+using TIP_var12BusinessLogic.ViewModels;
 
 namespace TIP_var12BusinessLogic.Interfaces
 {
-    interface IProvider
+    public interface IProvider
     {
+        List<ProviderViewModel> GetFullList();
+        void Insert(ProvidersBindingModel model);
+        void Update(ProvidersBindingModel model);
+        void Delete(ProvidersBindingModel model);
     }
 }

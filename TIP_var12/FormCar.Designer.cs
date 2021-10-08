@@ -114,6 +114,7 @@ namespace TIP_var12
             this.buttonCancel.TabIndex = 19;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonSave
             // 
@@ -123,6 +124,7 @@ namespace TIP_var12
             this.buttonSave.TabIndex = 18;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // FormCar
             // 

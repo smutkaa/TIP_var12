@@ -30,8 +30,12 @@ namespace TIP_var12
 			var currentContainer = new UnityContainer();
 			currentContainer.RegisterType<IAccountingChart, AccountingChartStorage>(new
 			HierarchicalLifetimeManager());
-		
+			currentContainer.RegisterType<ISeries, SeriesStorage>(new
+			HierarchicalLifetimeManager());
+
+
 			currentContainer.RegisterType<AccountChartLogic>(new HierarchicalLifetimeManager());
+			currentContainer.RegisterType<SeriesLogic>(new HierarchicalLifetimeManager());
 
 			return currentContainer;
 		}

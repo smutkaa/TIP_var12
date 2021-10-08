@@ -25,7 +25,5 @@ namespace TIP_var12BusinessLogic.BusinessLogic
             
             return _acStorage.GetFilteredList(model);
         }
-
-
     }
 }

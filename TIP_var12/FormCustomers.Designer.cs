@@ -62,6 +62,7 @@ namespace TIP_var12
             this.buttonDelete.TabIndex = 9;
             this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonChange
             // 
@@ -71,6 +72,7 @@ namespace TIP_var12
             this.buttonChange.TabIndex = 8;
             this.buttonChange.Text = "Редактировать";
             this.buttonChange.UseVisualStyleBackColor = true;
+            this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
             // 
             // buttonAdd
             // 
@@ -80,6 +82,7 @@ namespace TIP_var12
             this.buttonAdd.TabIndex = 7;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // dataGridView
             // 
@@ -102,6 +105,7 @@ namespace TIP_var12
             this.Controls.Add(this.dataGridView);
             this.Name = "FormCustomers";
             this.Text = "Покупатели";
+            this.Load += new System.EventHandler(this.FormCustomers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

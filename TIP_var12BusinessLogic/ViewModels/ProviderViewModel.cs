@@ -4,7 +4,9 @@ using System.Text;
 
 namespace TIP_var12BusinessLogic.ViewModels
 {
-    class ProviderViewModel
+   public  class ProviderViewModel
     {
+        public int? Id { get; set; }
+        public string Name { get; set; }
     }
 }

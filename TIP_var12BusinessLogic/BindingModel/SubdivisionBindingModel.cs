@@ -4,7 +4,10 @@ using System.Text;
 
 namespace TIP_var12BusinessLogic.BindingModel
 {
-    class SubdivisionBindingModel
+    public class SubdivisionBindingModel
     {
+        public int? Id { get; set; }
+        public string Name { get; set; }
+        public int Accountchartid { get; set; }
     }
 }
