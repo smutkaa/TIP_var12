@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TIP_var12BusinessLogic.Interfaces
 {
-    interface ISubdivision
+    public interface ISubdivision
     {
     }
 }

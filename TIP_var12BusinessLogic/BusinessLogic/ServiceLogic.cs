@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TIP_var12BusinessLogic.BusinessLogic
 {
-    public class SubdivisionLogic
+    public class ServiceLogic
     {
     }
 }

@@ -29,7 +29,7 @@ namespace TIP_var12
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxAccountChart = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.labelName = new System.Windows.Forms.Label();
@@ -37,13 +37,13 @@ namespace TIP_var12
             this.buttonCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // comboBoxAccountChart
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(148, 82);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(170, 21);
-            this.comboBox1.TabIndex = 15;
+            this.comboBoxAccountChart.FormattingEnabled = true;
+            this.comboBoxAccountChart.Location = new System.Drawing.Point(148, 82);
+            this.comboBoxAccountChart.Name = "comboBoxAccountChart";
+            this.comboBoxAccountChart.Size = new System.Drawing.Size(170, 21);
+            this.comboBoxAccountChart.TabIndex = 15;
             // 
             // label1
             // 
@@ -78,6 +78,7 @@ namespace TIP_var12
             this.buttonSave.TabIndex = 16;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonCancel
             // 
@@ -87,6 +88,7 @@ namespace TIP_var12
             this.buttonCancel.TabIndex = 17;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // FormSubdivision
             // 
@@ -95,12 +97,13 @@ namespace TIP_var12
             this.ClientSize = new System.Drawing.Size(410, 204);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxAccountChart);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.labelName);
             this.Name = "FormSubdivision";
             this.Text = "Подразделение";
+            this.Load += new System.EventHandler(this.FormSubdivision_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -108,7 +111,7 @@ namespace TIP_var12
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxAccountChart;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label labelName;

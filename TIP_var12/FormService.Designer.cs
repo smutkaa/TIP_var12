@@ -35,7 +35,7 @@ namespace TIP_var12
             this.labelSubdivision = new System.Windows.Forms.Label();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.labelName = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -47,6 +47,7 @@ namespace TIP_var12
             this.buttonCancel.TabIndex = 23;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonSave
             // 
@@ -56,6 +57,7 @@ namespace TIP_var12
             this.buttonSave.TabIndex = 22;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // comboBoxSubs
             // 
@@ -90,12 +92,12 @@ namespace TIP_var12
             this.labelName.TabIndex = 18;
             this.labelName.Text = "Стоимость";
             // 
-            // textBox1
+            // textBoxName
             // 
-            this.textBox1.Location = new System.Drawing.Point(154, 33);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(170, 20);
-            this.textBox1.TabIndex = 25;
+            this.textBoxName.Location = new System.Drawing.Point(154, 33);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(170, 20);
+            this.textBoxName.TabIndex = 25;
             // 
             // label2
             // 
@@ -110,8 +112,8 @@ namespace TIP_var12
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 223);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(379, 223);
+            this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
@@ -121,6 +123,7 @@ namespace TIP_var12
             this.Controls.Add(this.labelName);
             this.Name = "FormService";
             this.Text = "Услуга";
+            this.Load += new System.EventHandler(this.FormService_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,7 +137,7 @@ namespace TIP_var12
         private System.Windows.Forms.Label labelSubdivision;
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.Label labelName;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label2;
     }
 }
