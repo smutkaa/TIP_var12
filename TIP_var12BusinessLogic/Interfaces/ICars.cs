@@ -9,6 +9,7 @@ namespace TIP_var12BusinessLogic.Interfaces
     public interface  ICars
     {
         List<CarsViewModel> GetFullList();
+        CarsViewModel GetElement(CarBindingModel model);
         void Insert(CarBindingModel model);
         void Update(CarBindingModel model);
         void Delete(CarBindingModel model);

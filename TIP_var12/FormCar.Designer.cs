@@ -143,6 +143,7 @@ namespace TIP_var12
             this.Controls.Add(this.labelName);
             this.Name = "FormCar";
             this.Text = "Автомобиль";
+            this.Load += new System.EventHandler(this.FormCar_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -51,7 +51,7 @@ namespace TIP_var12
 
         private void покупательToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<Form>();
+            var form = Container.Resolve<FormCustomers>();
             form.ShowDialog();
         }
 

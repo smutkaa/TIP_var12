@@ -189,6 +189,12 @@
     <Compile Include="FormSeries.Designer.cs">
       <DependentUpon>FormSeries.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormService.Designer.cs">
+      <DependentUpon>FormService.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormServices.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +235,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSeries.resx">
       <DependentUpon>FormSeries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormService.resx">
+      <DependentUpon>FormService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormServices.resx">
+      <DependentUpon>FormServices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSubdivision.resx">
       <DependentUpon>FormSubdivision.cs</DependentUpon>

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TIP_var12BusinessLogic.BindingModel;
 using TIP_var12BusinessLogic.Interfaces;
+using TIP_var12BusinessLogic.ViewModels;
 
 namespace TIP_var12BusinessLogic.BusinessLogic
 {
@@ -12,48 +14,41 @@ namespace TIP_var12BusinessLogic.BusinessLogic
         {
             this.custStorage = custStorage;
         }
-        /*
-        public List<CarsViewModel> Read(CarBindingModel model)
+        
+        public List<CustomerViewModel> Read(CustomerBindingModel model)
         {
-            if (model == null)
-            {
-                return carStorage.GetFullList();
-            }
-
-            return carStorage.GetFilteredList(model);
+            return custStorage.GetFullList();
         }
-        public void CreateOrUpdate(TaskBindingModel model)
+        public void CreateOrUpdate(CustomerBindingModel model)
         {
-            var element = _taskStorage.GetElement(new TaskBindingModel
+            var element = custStorage.GetElement(new CustomerBindingModel
             {
-                Name = model.Name,
-                Text = model.Text,
-                Projectid = model.Projectid
+                Fio = model.Fio
             });
             if (element != null && element.Id != model.Id)
             {
-                throw new Exception("Уже есть такая задача");
+                throw new Exception("Уже есть такой покупатель");
             }
             if (model.Id.HasValue)
             {
-                _taskStorage.Update(model);
+                custStorage.Update(model);
             }
             else
             {
-                _taskStorage.Insert(model);
+                custStorage.Insert(model);
             }
         }
-        public void Delete(TaskBindingModel model)
+        public void Delete(CustomerBindingModel model)
         {
-            var element = _taskStorage.GetElement(new TaskBindingModel
+            var element = custStorage.GetElement(new CustomerBindingModel
             {
                 Id = model.Id
             });
             if (element == null)
             {
-                throw new Exception("Задача не найдена");
+                throw new Exception("Покупатель не найден");
             }
-            _taskStorage.Delete(model);
-        }*/
+            custStorage.Delete(model);
+        }
     }
 }

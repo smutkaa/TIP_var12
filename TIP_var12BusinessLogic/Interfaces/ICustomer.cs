@@ -9,6 +9,7 @@ namespace TIP_var12BusinessLogic.Interfaces
     public interface ICustomer
     {
         List<CustomerViewModel> GetFullList();
+        CustomerViewModel GetElement(CustomerBindingModel model);
         void Insert(CustomerBindingModel model);
         void Update(CustomerBindingModel model);
         void Delete(CustomerBindingModel model);

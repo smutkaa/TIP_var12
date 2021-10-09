@@ -14,40 +14,36 @@ namespace TIP_var12BusinessLogic.BusinessLogic
         {
             this.carStorage = carStorage;
         }
-        /*
+        
         public List<CarsViewModel> Read(CarBindingModel model)
         {
-            if (model == null)
-            {
-                return carStorage.GetFullList();
-            }
-
-            return carStorage.GetFilteredList(model);
+            return carStorage.GetFullList();
         }
-        public void CreateOrUpdate(TaskBindingModel model)
+        public void CreateOrUpdate(CarBindingModel model)
         {
-            var element = _taskStorage.GetElement(new TaskBindingModel
+            var element = carStorage.GetElement(new CarBindingModel
             {
                 Name = model.Name,
-                Text = model.Text,
-                Projectid = model.Projectid
+                Purchaseprice = model.Purchaseprice,
+                Retailprice = model.Retailprice,
+                Seriesid = model.Seriesid
             });
             if (element != null && element.Id != model.Id)
             {
-                throw new Exception("Уже есть такая задача");
+                throw new Exception("Уже есть такая машина");
             }
             if (model.Id.HasValue)
             {
-                _taskStorage.Update(model);
+                carStorage.Update(model);
             }
             else
             {
-                _taskStorage.Insert(model);
+                carStorage.Insert(model);
             }
         }
-        public void Delete(TaskBindingModel model)
+        public void Delete(CarBindingModel model)
         {
-            var element = _taskStorage.GetElement(new TaskBindingModel
+            var element = carStorage.GetElement(new CarBindingModel
             {
                 Id = model.Id
             });
@@ -55,7 +51,7 @@ namespace TIP_var12BusinessLogic.BusinessLogic
             {
                 throw new Exception("Задача не найдена");
             }
-            _taskStorage.Delete(model);
-        }*/
+            carStorage.Delete(model);
+        }
     }
 }
