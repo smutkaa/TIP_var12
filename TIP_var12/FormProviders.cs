@@ -16,6 +16,7 @@ namespace TIP_var12
     public partial class FormProviders : Form
     {
         private readonly ProviderLogic _logicP;
+        private int? id;
         public FormProviders(ProviderLogic _logicP)
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace TIP_var12
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+                id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
 
                 ProviderViewModel view = _logicP.Read(new ProvidersBindingModel { Id = id })?[0];
                 if (view != null)
@@ -48,8 +49,10 @@ namespace TIP_var12
             {
                 _logicP.CreateOrUpdate(new ProvidersBindingModel
                 {
+                    Id = id,
                     Name = textBoxProvider.Text
                 });
+                id = null;
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBoxProvider.Clear();
@@ -103,5 +106,5 @@ namespace TIP_var12
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-    }
+	}
 }

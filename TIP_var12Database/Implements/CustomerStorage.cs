@@ -31,7 +31,7 @@ namespace TIP_var12Database.Implements
             using (var context = new mydbContext())
             {
                 var customer = context.Customers
-               .FirstOrDefault(rec => rec.Fio == model.Fio);
+               .FirstOrDefault(rec => rec.Fio == model.Fio || rec.Customerid == model.Id);
                 return customer != null ?
                 new CustomerViewModel
                 {

@@ -57,13 +57,13 @@ namespace TIP_var12
 
         private void подразделенияToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormCustomers>();
+            var form = Container.Resolve<FormSubdivisions>();
             form.ShowDialog();
         }
 
         private void услугиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormSubdivisions>();
+            var form = Container.Resolve<FormServices>();
             form.ShowDialog();
         }
     }

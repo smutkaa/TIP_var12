@@ -17,6 +17,15 @@ namespace TIP_var12BusinessLogic.BusinessLogic
         
         public List<CarsViewModel> Read(CarBindingModel model)
         {
+            if (model == null)
+            {
+                return carStorage.GetFullList();
+            }
+            if (model.Id.HasValue)
+            {
+                return new List<CarsViewModel> { carStorage.GetElement(model) };
+            }
+
             return carStorage.GetFullList();
         }
         public void CreateOrUpdate(CarBindingModel model)

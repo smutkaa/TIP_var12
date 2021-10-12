@@ -35,13 +35,14 @@ namespace TIP_var12
             }
             if (comboBoxAccountChart.SelectedValue == null)
             {
-                MessageBox.Show("Выберите серию", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Выберите счет учета", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
             {
                 logicS.CreateOrUpdate(new SubdivisionBindingModel
                 {
+                    Id = id,
                     Name = textBoxName.Text,
                     Accountchartid = Convert.ToInt32(comboBoxAccountChart.SelectedValue),
                 });
@@ -71,7 +72,8 @@ namespace TIP_var12
                     if (view != null)
                     {
                         textBoxName.Text = view.Name;
-                        LoadComboBox();
+
+                        LoadComboBox(view);
                     }
                 }
                 catch (Exception ex)
@@ -81,18 +83,22 @@ namespace TIP_var12
             }
             else
             {
-                LoadComboBox();
+                LoadComboBox(null);
             }
         }
-        private void LoadComboBox()
+        private void LoadComboBox(SubdivisionViewModel view)
         {
-            List<SubdivisionViewModel> list = logicS.Read(null);
+            List<AccountingChartViewModel> list = logicAC.Read(null);
             if (list != null)
             {
                 comboBoxAccountChart.DisplayMember = "Name";
                 comboBoxAccountChart.ValueMember = "Id";
                 comboBoxAccountChart.DataSource = list;
-                comboBoxAccountChart.SelectedItem = null;
+				if (view != null)
+				{
+                    comboBoxAccountChart.SelectedValue = list.FirstOrDefault(c => c.Id == view?.Accountchartid)?.Id;
+                }
+                
             }
         }
     }

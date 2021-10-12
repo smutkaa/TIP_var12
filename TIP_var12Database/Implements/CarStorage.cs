@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,8 @@ namespace TIP_var12Database.Implements
                     Name = rec.Name,
                     Purchaseprice = rec.Purchaseprice,
                     Retailprice = rec.Retailprice,
-                    Seriesid = rec.Seriesid
+                    Seriesid = rec.Seriesid,
+                    SeriesName = rec.Series.Name
                 })
                 .ToList();
             }
@@ -34,6 +36,7 @@ namespace TIP_var12Database.Implements
             using (var context = new mydbContext())
             {
                 var cars = context.Cars
+               .Include(rec => rec.Series)
                .FirstOrDefault(rec => rec.Name == model.Name || rec.Carid == model.Id );
                 return cars != null ?
                 new CarsViewModel
@@ -42,7 +45,8 @@ namespace TIP_var12Database.Implements
                     Name = cars.Name,
                     Purchaseprice = cars.Purchaseprice,
                     Retailprice = cars.Retailprice,
-                    Seriesid = cars.Seriesid
+                    Seriesid = cars.Seriesid,
+                    SeriesName = cars.Series.Name
                 } : null;
             }
         }

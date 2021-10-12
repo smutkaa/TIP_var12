@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TIP_var12BusinessLogic.BindingModel;
@@ -15,12 +16,14 @@ namespace TIP_var12
 {
     public partial class FormService : Form
     {
+        
         public int Id { set { id = value; } }
         private readonly ServiceLogic logicSer;
         private readonly SubdivisionLogic logicSub;
         private int? id;
         public FormService(ServiceLogic logicSer, SubdivisionLogic logicSub)
         {
+            
             InitializeComponent();
             this.logicSer = logicSer;
             this.logicSub = logicSub;
@@ -33,6 +36,16 @@ namespace TIP_var12
                 MessageBox.Show("Заполните пустые поля", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (!Regex.Match(textBoxPrice.Text, @"^(\d+),(\d{1,2})$", RegexOptions.IgnoreCase).Success  )
+			{
+                MessageBox.Show("Только 2 знака после запятой", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (Convert.ToDecimal(textBoxPrice.Text)<0)
+            {
+                MessageBox.Show("Цена не может быть отрицательной", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (comboBoxSubs.SelectedValue == null)
             {
                 MessageBox.Show("Выберите подразделение", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -42,6 +55,7 @@ namespace TIP_var12
             {
                 logicSer.CreateOrUpdate(new ServiceBindingModel
                 {
+                    Id = id,
                     Name = textBoxName.Text,
                     Price = Convert.ToDecimal(textBoxPrice.Text),
                     Subdivisionid = Convert.ToInt32(comboBoxSubs.SelectedValue),
@@ -72,8 +86,8 @@ namespace TIP_var12
                     if (view != null)
                     {
                         textBoxName.Text = view.Name;
-                        textBoxPrice.Text = view.Price;
-                        LoadComboBox();
+                        textBoxPrice.Text = Convert.ToString(view.Price);
+                        LoadComboBox(view);
                     }
                 }
                 catch (Exception ex)
@@ -83,10 +97,10 @@ namespace TIP_var12
             }
             else
             {
-                LoadComboBox();
+                LoadComboBox(null);
             }
         }
-        private void LoadComboBox()
+        private void LoadComboBox(ServiceViewModel view)
         {
             List<SubdivisionViewModel> list = logicSub.Read(null);
             if (list != null)
@@ -94,7 +108,10 @@ namespace TIP_var12
                 comboBoxSubs.DisplayMember = "Name";
                 comboBoxSubs.ValueMember = "Id";
                 comboBoxSubs.DataSource = list;
-                comboBoxSubs.SelectedItem = null;
+				if (view != null)
+				{
+                    comboBoxSubs.SelectedValue = list.FirstOrDefault(c => c.Id == view?.Subdivisionid)?.Id;
+                }
             }
         }
     }

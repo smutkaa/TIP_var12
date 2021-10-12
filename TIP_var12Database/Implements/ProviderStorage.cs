@@ -31,7 +31,7 @@ namespace TIP_var12Database.Implements
             using (var context = new mydbContext())
             {
                 var prov = context.Providers
-               .FirstOrDefault(rec => rec.Name == model.Name);
+               .FirstOrDefault(rec => rec.Providerid == model.Id);
                 return prov != null ?
                 new ProviderViewModel
                 {

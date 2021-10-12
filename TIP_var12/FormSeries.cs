@@ -16,6 +16,7 @@ namespace TIP_var12
     public partial class FormSeries : Form
     {
         private readonly SeriesLogic _logicS;
+        private int? id;
         public FormSeries(SeriesLogic logicS)
         {
             InitializeComponent();
@@ -46,7 +47,7 @@ namespace TIP_var12
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+                id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
 
                 SeriesViewModel view = _logicS.Read(new SeriesBindingModel { Id = id })?[0];
                 if (view != null)
@@ -68,9 +69,11 @@ namespace TIP_var12
             {
                 _logicS.CreateOrUpdate(new SeriesBindingModel
                 {
+                    Id = id,
                     Name = textBoxSeries.Text
 
                 });
+                id = null;
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBoxSeries.Clear();

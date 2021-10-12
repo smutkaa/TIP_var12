@@ -17,14 +17,25 @@ namespace TIP_var12BusinessLogic.BusinessLogic
         
         public List<CustomerViewModel> Read(CustomerBindingModel model)
         {
+            if (model == null)
+            {
+                return custStorage.GetFullList();
+            }
+            if (model.Id.HasValue)
+            {
+                return new List<CustomerViewModel> { custStorage.GetElement(model) };
+            }
+           
             return custStorage.GetFullList();
+
         }
         public void CreateOrUpdate(CustomerBindingModel model)
         {
             var element = custStorage.GetElement(new CustomerBindingModel
             {
+                Id = model.Id,
                 Fio = model.Fio
-            });
+            }); ;
             if (element != null && element.Id != model.Id)
             {
                 throw new Exception("Уже есть такой покупатель");

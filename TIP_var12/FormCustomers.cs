@@ -16,6 +16,7 @@ namespace TIP_var12
     public partial class FormCustomers : Form
     {
         private readonly CustomerLogic _logicC;
+        private int? id;
         public FormCustomers(CustomerLogic logicC)
         {
             InitializeComponent();
@@ -46,7 +47,7 @@ namespace TIP_var12
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+                id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
 
                 CustomerViewModel view = _logicC.Read(new CustomerBindingModel { Id = id })?[0];
                 if (view != null)
@@ -68,9 +69,10 @@ namespace TIP_var12
             {
                 _logicC.CreateOrUpdate(new CustomerBindingModel
                 {
+                    Id = id,
                     Fio = textBoxCustomers.Text
-
                 });
+                id = null;
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBoxCustomers.Clear();

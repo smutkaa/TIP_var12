@@ -16,8 +16,15 @@ namespace TIP_var12BusinessLogic.BusinessLogic
         }
         public List<SeriesViewModel> Read(SeriesBindingModel model)
         {
-
+            if (model == null)
+            {
                 return serStorage.GetFullList();
+            }
+                if (model.Id.HasValue)
+			{
+                return new List<SeriesViewModel> { serStorage.GetElement(model)};
+            }
+            return serStorage.GetFullList();
         }
         public void CreateOrUpdate(SeriesBindingModel model)
         {

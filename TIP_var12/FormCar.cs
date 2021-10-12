@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TIP_var12BusinessLogic.BindingModel;
@@ -33,6 +34,16 @@ namespace TIP_var12
                 MessageBox.Show("Заполните название", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (!Regex.Match(textBoxPurchasePrice.Text, @"^(\d+),(\d{1,2})$", RegexOptions.IgnoreCase).Success)
+            {
+                MessageBox.Show("Введите правильную закупочную цену(2 знака после запятой)", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!Regex.Match(textBoxRetailPrice.Text, @"^(\d+),(\d{1,2})$", RegexOptions.IgnoreCase).Success)
+            {
+                MessageBox.Show("Введите правильную розничную цену(2 знака после запятой)", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (comboBoxSeries.SelectedValue == null)
             {
                 MessageBox.Show("Выберите серию", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -42,11 +53,12 @@ namespace TIP_var12
             {
                 logicC.CreateOrUpdate(new CarBindingModel
                 {
+                    Id = id,
                     Name = textBoxName.Text,
                     Purchaseprice = Convert.ToDecimal(textBoxPurchasePrice.Text),
                     Retailprice = Convert.ToDecimal(textBoxRetailPrice.Text),
                     Seriesid = Convert.ToInt32(comboBoxSeries.SelectedValue),
-                });
+                }); ;
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
                 Close();
@@ -76,7 +88,7 @@ namespace TIP_var12
 
                         textBoxPurchasePrice.Text = Convert.ToString(view.Purchaseprice);
                         textBoxRetailPrice.Text = Convert.ToString(view.Retailprice);
-                        LoadComboBox();
+                        LoadComboBox(view);
                     }
                 }
                 catch (Exception ex)
@@ -86,11 +98,11 @@ namespace TIP_var12
             }
             else
             {
-                LoadComboBox();
+                LoadComboBox(null);
             }
             
         }
-        private void LoadComboBox()
+        private void LoadComboBox(CarsViewModel view)
         {
             List<SeriesViewModel> serieslist = logicS.Read(null);
             if (serieslist != null)
@@ -98,7 +110,10 @@ namespace TIP_var12
                 comboBoxSeries.DisplayMember = "Name";
                 comboBoxSeries.ValueMember = "Id";
                 comboBoxSeries.DataSource = serieslist;
-                comboBoxSeries.SelectedItem = null;
+                if (view != null)
+                {
+                    comboBoxSeries.SelectedValue = serieslist.FirstOrDefault(c => c.Id == view?.Seriesid)?.Id;
+                }
             }
         }
     }

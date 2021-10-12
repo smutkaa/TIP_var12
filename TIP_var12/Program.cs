@@ -38,12 +38,18 @@ namespace TIP_var12
 			HierarchicalLifetimeManager());
 			currentContainer.RegisterType<IProvider, ProviderStorage>(new
 			HierarchicalLifetimeManager());
+			currentContainer.RegisterType<IService, ServiceStorage>(new
+			HierarchicalLifetimeManager());
+			currentContainer.RegisterType<ISubdivision, SubdivisionStorage>(new
+			HierarchicalLifetimeManager());
 
 			currentContainer.RegisterType<AccountChartLogic>(new HierarchicalLifetimeManager());
 			currentContainer.RegisterType<SeriesLogic>(new HierarchicalLifetimeManager());
 			currentContainer.RegisterType<CarLogic>(new HierarchicalLifetimeManager());
 			currentContainer.RegisterType<CustomerLogic>(new HierarchicalLifetimeManager());
 			currentContainer.RegisterType<ProviderLogic>(new HierarchicalLifetimeManager());
+			currentContainer.RegisterType<ServiceLogic>(new HierarchicalLifetimeManager());
+			currentContainer.RegisterType<SubdivisionLogic>(new HierarchicalLifetimeManager());
 
 			return currentContainer;
 		}

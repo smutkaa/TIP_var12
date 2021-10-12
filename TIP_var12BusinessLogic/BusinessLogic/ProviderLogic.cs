@@ -17,7 +17,16 @@ namespace TIP_var12BusinessLogic.BusinessLogic
 
         public List<ProviderViewModel> Read(ProvidersBindingModel model)
         {
+            if (model == null)
+            {
+                return provStorage.GetFullList();
+            }
+            if (model.Id.HasValue)
+            {
+                return new List<ProviderViewModel> { provStorage.GetElement(model) };
+            }
             return provStorage.GetFullList();
+
         }
         public void CreateOrUpdate(ProvidersBindingModel model)
         {
