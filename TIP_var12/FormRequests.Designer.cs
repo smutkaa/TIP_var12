@@ -84,7 +84,7 @@ namespace TIP_var12
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FormRequests";
-            this.Text = "FormRequests";
+            this.Text = "Заявки";
             this.Load += new System.EventHandler(this.FormRequests_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

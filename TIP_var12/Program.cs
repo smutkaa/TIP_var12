@@ -44,7 +44,9 @@ namespace TIP_var12
 			HierarchicalLifetimeManager());
 			currentContainer.RegisterType<IPurchaseDoc, PurchaseDocStorage>(new
 			HierarchicalLifetimeManager());
-	
+			currentContainer.RegisterType<IRequest, RequestStorage>(new
+			HierarchicalLifetimeManager());
+
 
 
 			currentContainer.RegisterType<AccountChartLogic>(new HierarchicalLifetimeManager());
@@ -55,6 +57,7 @@ namespace TIP_var12
 			currentContainer.RegisterType<ServiceLogic>(new HierarchicalLifetimeManager());
 			currentContainer.RegisterType<SubdivisionLogic>(new HierarchicalLifetimeManager());
 			currentContainer.RegisterType<PurchaseDocLogic>(new HierarchicalLifetimeManager());
+			currentContainer.RegisterType<RequestLogiccs>(new HierarchicalLifetimeManager());
 
 			return currentContainer;
 		}

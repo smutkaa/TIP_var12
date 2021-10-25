@@ -40,6 +40,8 @@ namespace TIP_var12Database.Implements
             using (var context = new mydbContext())
             {
                 var doc = context.Requests
+                .Include(rec => rec.Car)
+                .Include(rec => rec.Customer)
                 .FirstOrDefault(rec => rec.Requestsid == model.Id);
                 return doc != null ?
                 new RequestViewModel

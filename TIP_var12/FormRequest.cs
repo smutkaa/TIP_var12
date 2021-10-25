@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TIP_var12BusinessLogic.BindingModel;
 using TIP_var12BusinessLogic.BusinessLogic;
+using TIP_var12BusinessLogic.ViewModels;
 
 namespace TIP_var12
 {
@@ -15,13 +17,15 @@ namespace TIP_var12
     {
         public int Id { set { id = value; } }
         private readonly CarLogic logicC;
+        private readonly CustomerLogic logicCus;
         private readonly RequestLogiccs logicR;
         private int? id;
-        public FormRequest(CarLogic logicC, RequestLogiccs logicR)
+        public FormRequest(CarLogic logicC, RequestLogiccs logicR , CustomerLogic logicCus)
         {
             InitializeComponent();
             this.logicC = logicC;
             this.logicR = logicR;
+            this.logicCus = logicCus;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -38,12 +42,14 @@ namespace TIP_var12
             }
             try
             {
-                logicC.CreateOrUpdate(new CarBindingModel
+                logicR.CreateOrUpdate(new RequestBindingModel
                 {
                     Id = id,
-                    Name = textBoxName.Text,
-                    Seriesid = Convert.ToInt32(comboBoxSeries.SelectedValue),
-                }); ;
+                    Date = dateTimePicker.Value,
+                    Carid = Convert.ToInt32(comboBoxCar.SelectedValue),
+                    Customerid = Convert.ToInt32(comboBoxCustomer.SelectedValue),
+                    Quantity = Convert.ToInt32(textBoxCout.Text)
+                }); 
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
                 Close();
@@ -66,10 +72,11 @@ namespace TIP_var12
             {
                 try
                 {
-                    var view = logicC.Read(new CarBindingModel { Id = id })?[0];
+                    var view = logicR.Read(new RequestBindingModel { Id = id })?[0];
                     if (view != null)
                     {
-                        textBoxName.Text = view.Name;
+                        textBoxCout.Text = Convert.ToString(view.Quantity);
+                        dateTimePicker.Value = view.Date;
 
                         LoadComboBox(view);
                     }
@@ -84,17 +91,27 @@ namespace TIP_var12
                 LoadComboBox(null);
             }
         }
-        private void LoadComboBox(CarsViewModel view)
+        private void LoadComboBox(RequestViewModel view)
         {
-            List<SeriesViewModel> serieslist = logicS.Read(null);
-            if (serieslist != null)
+            List<CarsViewModel> carslist = logicC.Read(null);
+            List<CustomerViewModel> cuslist = logicCus.Read(null);
+
+            if (carslist != null && cuslist != null)
             {
-                comboBoxSeries.DisplayMember = "Name";
-                comboBoxSeries.ValueMember = "Id";
-                comboBoxSeries.DataSource = serieslist;
+                comboBoxCar.DisplayMember = "Name";
+                comboBoxCar.ValueMember = "Id";
+                comboBoxCar.DataSource = carslist;
                 if (view != null)
                 {
-                    comboBoxSeries.SelectedValue = serieslist.FirstOrDefault(c => c.Id == view?.Seriesid)?.Id;
+                    comboBoxCar.SelectedValue = carslist.FirstOrDefault(c => c.Id == view?.Carid)?.Id;
+                }
+
+                comboBoxCustomer.DisplayMember = "FIO";
+                comboBoxCustomer.ValueMember = "Id";
+                comboBoxCustomer.DataSource = cuslist;
+                if (view != null)
+                {
+                    comboBoxCustomer.SelectedValue = cuslist.FirstOrDefault(c => c.Id == view?.Customerid)?.Id;
                 }
             }
         }

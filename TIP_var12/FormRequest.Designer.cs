@@ -37,12 +37,14 @@ namespace TIP_var12
             this.textBoxCout = new System.Windows.Forms.TextBox();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxCustomer = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 74);
+            this.label3.Location = new System.Drawing.Point(35, 101);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 13);
             this.label3.TabIndex = 13;
@@ -60,7 +62,7 @@ namespace TIP_var12
             // comboBoxCar
             // 
             this.comboBoxCar.FormattingEnabled = true;
-            this.comboBoxCar.Location = new System.Drawing.Point(110, 71);
+            this.comboBoxCar.Location = new System.Drawing.Point(110, 98);
             this.comboBoxCar.Name = "comboBoxCar";
             this.comboBoxCar.Size = new System.Drawing.Size(200, 21);
             this.comboBoxCar.TabIndex = 11;
@@ -75,7 +77,7 @@ namespace TIP_var12
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(35, 106);
+            this.label6.Location = new System.Drawing.Point(35, 133);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 13);
             this.label6.TabIndex = 24;
@@ -83,14 +85,14 @@ namespace TIP_var12
             // 
             // textBoxCout
             // 
-            this.textBoxCout.Location = new System.Drawing.Point(110, 103);
+            this.textBoxCout.Location = new System.Drawing.Point(110, 130);
             this.textBoxCout.Name = "textBoxCout";
             this.textBoxCout.Size = new System.Drawing.Size(200, 20);
             this.textBoxCout.TabIndex = 23;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(217, 155);
+            this.buttonCancel.Location = new System.Drawing.Point(217, 167);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(93, 23);
             this.buttonCancel.TabIndex = 26;
@@ -100,7 +102,7 @@ namespace TIP_var12
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(110, 155);
+            this.buttonSave.Location = new System.Drawing.Point(110, 167);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(85, 23);
             this.buttonSave.TabIndex = 25;
@@ -108,11 +110,30 @@ namespace TIP_var12
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(35, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Покупатель";
+            // 
+            // comboBoxCustomer
+            // 
+            this.comboBoxCustomer.FormattingEnabled = true;
+            this.comboBoxCustomer.Location = new System.Drawing.Point(110, 65);
+            this.comboBoxCustomer.Name = "comboBoxCustomer";
+            this.comboBoxCustomer.Size = new System.Drawing.Size(200, 21);
+            this.comboBoxCustomer.TabIndex = 27;
+            // 
             // FormRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(363, 213);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboBoxCustomer);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.label6);
@@ -122,7 +143,8 @@ namespace TIP_var12
             this.Controls.Add(this.comboBoxCar);
             this.Controls.Add(this.dateTimePicker);
             this.Name = "FormRequest";
-            this.Text = "FormRequest";
+            this.RightToLeftLayout = true;
+            this.Text = "Заявка";
             this.Load += new System.EventHandler(this.FormRequest_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -139,5 +161,7 @@ namespace TIP_var12
         private System.Windows.Forms.TextBox textBoxCout;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBoxCustomer;
     }
 }
