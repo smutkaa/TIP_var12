@@ -5,38 +5,35 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TIP_var12BusinessLogic.BindingModel;
 using TIP_var12BusinessLogic.BusinessLogic;
-using TIP_var12BusinessLogic.ViewModels;
 
 namespace TIP_var12
 {
-    public partial class FormCar : Form
+    public partial class FormRequest : Form
     {
         public int Id { set { id = value; } }
         private readonly CarLogic logicC;
-        private readonly SeriesLogic logicS;
+        private readonly RequestLogiccs logicR;
         private int? id;
-        public FormCar(CarLogic logic, SeriesLogic logicS)
+        public FormRequest(CarLogic logicC, RequestLogiccs logicR)
         {
             InitializeComponent();
-            this.logicC = logic;
-            this.logicS = logicS;
+            this.logicC = logicC;
+            this.logicR = logicR;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textBoxName.Text))
+            if (string.IsNullOrEmpty(textBoxCout.Text))
             {
-                MessageBox.Show("Заполните название", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Заполните количество", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (comboBoxSeries.SelectedValue == null)
+            if (comboBoxCar.SelectedValue == null)
             {
-                MessageBox.Show("Выберите серию", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Выберите автомобиль", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
@@ -63,7 +60,7 @@ namespace TIP_var12
             Close();
         }
 
-        private void FormCar_Load(object sender, EventArgs e)
+        private void FormRequest_Load(object sender, EventArgs e)
         {
             if (id.HasValue)
             {
@@ -86,7 +83,6 @@ namespace TIP_var12
             {
                 LoadComboBox(null);
             }
-            
         }
         private void LoadComboBox(CarsViewModel view)
         {

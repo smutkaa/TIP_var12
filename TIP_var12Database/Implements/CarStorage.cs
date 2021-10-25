@@ -102,8 +102,7 @@ namespace TIP_var12Database.Implements
         {
             using (var context = new mydbContext())
             {
-                Cars element = context.Cars.FirstOrDefault(rec => rec.Carid ==
-               model.Id);
+                Cars element = context.Cars.FirstOrDefault(rec => rec.Carid == model.Id);
                 if (element != null)
                 {
                     context.Cars.Remove(element);
@@ -128,7 +127,7 @@ namespace TIP_var12Database.Implements
 
         private Cars CreateModel(CarBindingModel model, Cars cars, mydbContext context)
         {
-            //cars.Carid = model.Id.Value;
+           //cars.Carid = model.Id.Value;
             cars.Name = model.Name;
             cars.Purchaseprice = model.Purchaseprice.Value;
             cars.Retailprice = model.Retailprice.Value;

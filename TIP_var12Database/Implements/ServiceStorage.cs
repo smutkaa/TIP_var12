@@ -26,6 +26,23 @@ namespace TIP_var12Database.Implements
                 .ToList();
             }
         }
+        public List<ServiceViewModel> GetFilteredList(ServiceBindingModel model)
+        {
+            using (var context = new mydbContext())
+            {
+                return context.Services
+                    .Where(rec=> rec.Subdivisionid == model.Subdivisionid)
+                    .Select(rec => new ServiceViewModel
+                {
+                    Id = rec.Servicesid,
+                    Name = rec.Name,
+                    Price = rec.Price,
+                    Subdivisionid = rec.Subdivisionid,
+                    SubvisionName = rec.Subdivision.Name
+                })
+                .ToList();
+            }
+        }
         public ServiceViewModel GetElement(ServiceBindingModel model)
         {
             if (model == null)

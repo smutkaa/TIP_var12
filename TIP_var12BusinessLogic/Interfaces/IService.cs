@@ -10,6 +10,7 @@ namespace TIP_var12BusinessLogic.Interfaces
     {
         List<ServiceViewModel> GetFullList();
         ServiceViewModel GetElement(ServiceBindingModel model);
+        List<ServiceViewModel> GetFilteredList(ServiceBindingModel model);
         void Insert(ServiceBindingModel model);
         void Update(ServiceBindingModel model);
         void Delete(ServiceBindingModel model);

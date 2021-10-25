@@ -25,7 +25,7 @@ namespace TIP_var12BusinessLogic.BusinessLogic
                 return new List<ServiceViewModel> { serStorage.GetElement(model) };
             }
             
-            return serStorage.GetFullList();
+            return serStorage.GetFilteredList(model);
         }
         public void CreateOrUpdate(ServiceBindingModel model)
         {

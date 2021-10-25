@@ -14,27 +14,26 @@ using Unity;
 
 namespace TIP_var12
 {
-    public partial class FormServices : Form
+    public partial class FormPurchaseDocs : Form
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
-        private readonly ServiceLogic _logicS;
-        private readonly SubdivisionLogic _logicSub;
-        public FormServices(ServiceLogic _logicS, SubdivisionLogic _logicSub)
+        private readonly PurchaseDocLogic _logicC;
+        private readonly ProviderLogic _logicProv;
+
+        public FormPurchaseDocs(PurchaseDocLogic _logicC, ProviderLogic _logicProv)
         {
             InitializeComponent();
-            this._logicS = _logicS;
-            this._logicSub = _logicSub;
+            this._logicC = _logicC;
+            this._logicProv = _logicProv;
         }
-
-        private void FormServices_Load(object sender, EventArgs e)
+        private void FormPurchaseDocs_Load(object sender, EventArgs e)
         {
             LoadData();
         }
-
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormService>();
+            var form = Container.Resolve<FormPurchaseDoc>();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
@@ -45,7 +44,7 @@ namespace TIP_var12
         {
             if (dataGridView1.SelectedRows.Count == 1)
             {
-                var form = Container.Resolve<FormService>();
+                var form = Container.Resolve<FormPurchaseDoc>();
                 form.Id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -63,7 +62,7 @@ namespace TIP_var12
                     int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        _logicS.Delete(new ServiceBindingModel { Id = id });
+                        _logicC.Delete(new PurchasedocsBindingModel { Id = id });
                     }
                     catch (Exception ex)
                     {
@@ -77,36 +76,53 @@ namespace TIP_var12
         {
             try
             {
-                var list = _logicS.Read(null);
+                var list = _logicC.Read(null);
                 if (list != null)
                 {
                     dataGridView1.DataSource = list;
                     dataGridView1.Columns[0].Visible = false;
-                    dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    dataGridView1.Columns[3].Visible = false;
-                    dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    LoadComboBox();
+                    dataGridView1.Columns[4].Visible = false;
                 }
+                List<ProviderViewModel> provlist = _logicProv.Read(null);
 
+                if (provlist != null)
+                {
+                    comboBoxProvider.DisplayMember = "Name";
+                    comboBoxProvider.ValueMember = "Id";
+                    comboBoxProvider.DataSource = provlist;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
-        private void buttonFilter_Click(object sender, EventArgs e)
+        private void buttonFiltred_Click(object sender, EventArgs e)
         {
             try
             {
-                int id = Convert.ToInt32(comboBox1.SelectedValue);
-
-                var listFilt = _logicS.Read(new ServiceBindingModel { Subdivisionid = id});
-
-                if (listFilt != null)
+                int id = Convert.ToInt32(comboBoxProvider.SelectedValue);
+                List<PurchasedocsViewModel> listFilt;
+                if (checkBox1.Checked && !checkBox2.Checked)
                 {
+                    listFilt = _logicC.Read(new PurchasedocsBindingModel { Providerid = id });
+                }
+                else if (checkBox2.Checked && !checkBox1.Checked)
+                {
+                    listFilt = _logicC.Read(new PurchasedocsBindingModel { DateFrom = dateTimePickerFrom.Value, DateTo = dateTimePickerTo.Value });
+                }
+                else if (checkBox1.Checked && checkBox2.Checked)
+                {
+                    listFilt = _logicC.Read(null);
+                }
+                else
+                {
+                     listFilt = _logicC.Read(new PurchasedocsBindingModel {Providerid = id, DateFrom = dateTimePickerFrom.Value, DateTo = dateTimePickerTo.Value});
+                }
+               
+                if (listFilt != null)
+                {   
                     dataGridView1.DataSource = listFilt;
                     dataGridView1.Columns[0].Visible = false;
                     dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -120,22 +136,11 @@ namespace TIP_var12
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void buttonAll_Click(object sender, EventArgs e)
         {
             LoadData();
-        }
-        private void LoadComboBox()
-        {
-            List<SubdivisionViewModel> list = _logicSub.Read(null);
-            if (list != null)
-            {
-                comboBox1.DisplayMember = "Name";
-                comboBox1.ValueMember = "Id";
-                comboBox1.DataSource = list;
-            }
         }
     }
 }
