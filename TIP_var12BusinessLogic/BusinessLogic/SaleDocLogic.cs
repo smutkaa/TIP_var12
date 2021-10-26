@@ -25,8 +25,7 @@ namespace TIP_var12BusinessLogic.BusinessLogic
             {
                 return new List<SaleDocViewModel> { salStorage.GetElement(model) };
             }
-
-            return salStorage.GetFullList();
+            return salStorage.GetFilteredList(model);
         }
         public void CreateOrUpdate(SaleDocBindingModel model)
         {

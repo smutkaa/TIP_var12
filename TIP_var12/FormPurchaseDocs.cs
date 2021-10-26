@@ -81,6 +81,8 @@ namespace TIP_var12
                 {
                     dataGridView1.DataSource = list;
                     dataGridView1.Columns[0].Visible = false;
+                    dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridView1.Columns[3].Visible = false;
                     dataGridView1.Columns[4].Visible = false;
                 }
                 List<ProviderViewModel> provlist = _logicProv.Read(null);
@@ -128,7 +130,7 @@ namespace TIP_var12
                     dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     dataGridView1.Columns[3].Visible = false;
-                    dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridView1.Columns[4].Visible = false;
                 }
 
             }

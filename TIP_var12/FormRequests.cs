@@ -80,6 +80,7 @@ namespace TIP_var12
                 {
                     dataGridView1.DataSource = list;
                     dataGridView1.Columns[0].Visible = false;
+                    dataGridView1.Columns[3].Visible = false;
                     dataGridView1.Columns[4].Visible = false;
                 }
             }

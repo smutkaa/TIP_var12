@@ -40,6 +40,7 @@ namespace TIP_var12
                 MessageBox.Show("Выберите автомобиль", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             try
             {
                 logicR.CreateOrUpdate(new RequestBindingModel
