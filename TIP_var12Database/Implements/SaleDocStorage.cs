@@ -28,6 +28,7 @@ namespace TIP_var12Database.Implements
                    Date = rec.Date,
                    Employee = rec.Employee,
                    Requestsid = rec.Requestsid,
+                   Total = rec.Total,
                    SaleDocSevices = rec.Saleservices.ToDictionary(recPC => recPC.Servicesid, recPC => (recPC.Services?.Name, recPC.Number))
                })
                .ToList();
@@ -52,6 +53,7 @@ namespace TIP_var12Database.Implements
                        Date = rec.Date,
                        Employee = rec.Employee,
                        Requestsid = rec.Requestsid,
+                       Total = rec.Total,
                        SaleDocSevices = rec.Saleservices.ToDictionary(recPC => recPC.Servicesid, recPC => (recPC.Services.Name, recPC.Number))
                    })
                .ToList();
@@ -76,6 +78,7 @@ namespace TIP_var12Database.Implements
                     Date = doc.Date,
                     Employee = doc.Employee,
                     Requestsid = doc.Requestsid,
+                    Total = doc.Total,
                     SaleDocSevices = doc.Saleservices.ToDictionary(recPC => recPC.Servicesid, recPC => (recPC.Services?.Name, recPC.Number))
                 } : null;
             }
@@ -150,7 +153,7 @@ namespace TIP_var12Database.Implements
             saledocs.Date = model.Date;
             saledocs.Employee = model.Employee;
             saledocs.Requestsid = model.Requestsid;
-
+            saledocs.Total = model.Total;
             return saledocs;
         }
 
@@ -159,7 +162,7 @@ namespace TIP_var12Database.Implements
             saledocs.Date = model.Date;
             saledocs.Employee = model.Employee;
             saledocs.Requestsid = model.Requestsid;
-
+            saledocs.Total = model.Total;
             if (model.Id.HasValue)
             {
                 var saleDocService = context.Saleservices.Where(rec => rec.Saledocsid == model.Id.Value).ToList();

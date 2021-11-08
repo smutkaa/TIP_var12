@@ -37,6 +37,7 @@ namespace TIP_var12
 				MessageBox.Show("Выберите услугу", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
+
 			DialogResult = DialogResult.OK;
 			Close();
 		}

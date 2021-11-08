@@ -56,6 +56,11 @@ namespace TIP_var12
                 MessageBox.Show("Введите правильную розничную цену(2 знака после запятой)", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (Convert.ToDecimal(textBoxPurchasePrice.Text) >= Convert.ToDecimal(textBoxRetailPrice.Text))
+            {
+                MessageBox.Show("Розничная цена должна быть больше, чем закупочная", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 logicP.CreateOrUpdate(new PurchasedocsBindingModel

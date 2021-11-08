@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,7 @@ using System.Windows.Forms;
 using TIP_var12BusinessLogic.BindingModel;
 using TIP_var12BusinessLogic.BusinessLogic;
 using TIP_var12BusinessLogic.ViewModels;
+using TIP_var12Database;
 using Unity;
 
 namespace TIP_var12
@@ -51,6 +53,12 @@ namespace TIP_var12
 				MessageBox.Show("Заполните ФИО", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
+			DateTime? dateReq = logicReq.Read(new RequestBindingModel { Id = Convert.ToInt32(comboBoxRequest.SelectedValue)})?[0].Date;
+			if (dateReq > dateTimePicker.Value)
+			{
+				MessageBox.Show("Дата заявки не может быть больше даты в документе", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
 			try
 			{
 				logicSD.CreateOrUpdate(new SaleDocBindingModel
@@ -59,8 +67,10 @@ namespace TIP_var12
 					Date = dateTimePicker.Value,
 					Requestsid = Convert.ToInt32(comboBoxRequest.SelectedValue),
 					Employee = textBoxFIO.Text,
-					SaleDocSevices = saleDocServices
-				});
+					SaleDocSevices = saleDocServices,
+					Total = RequestRemainder()
+
+			});
 				MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				DialogResult = DialogResult.OK;
 				Close();
@@ -70,7 +80,24 @@ namespace TIP_var12
 				MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+		private decimal RequestRemainder()
+		{
+			decimal price = 0; 
+			
+			var context = new mydbContext();
+			var requests = context.Requests
+				.Include(rec => rec.Car)
+				.FirstOrDefault(rec => rec.Requestsid == Convert.ToInt32(comboBoxRequest.SelectedValue));
+			price = requests.Quantity * requests.Car.Retailprice;
 
+			foreach (var ser in saleDocServices)
+			{
+				price += context.Services.FirstOrDefault(rec => rec.Servicesid == ser.Key).Price * ser.Value.Item2;
+			}
+
+			return price;
+		}
+		
 		private void buttonCancel_Click(object sender, EventArgs e)
 		{
 			DialogResult = DialogResult.Cancel;
@@ -83,7 +110,14 @@ namespace TIP_var12
 
 			if (form.ShowDialog() == DialogResult.OK)
 			{
-				saleDocServices.Add(form.Id, (form.ServiceName, form.Count));
+				try
+				{
+					saleDocServices.Add(form.Id, (form.ServiceName, form.Count));
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
 				LoadData();
 			}
 		}
