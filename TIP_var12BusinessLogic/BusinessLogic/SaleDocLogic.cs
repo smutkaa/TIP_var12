@@ -27,8 +27,9 @@ namespace TIP_var12BusinessLogic.BusinessLogic
             }
             return salStorage.GetFilteredList(model);
         }
-        public void CreateOrUpdate(SaleDocBindingModel model)
+        public int CreateOrUpdate(SaleDocBindingModel model)
         {
+            int code = 0;
             var element = salStorage.GetElement(new SaleDocBindingModel
             {
                 Date = model.Date,
@@ -46,8 +47,9 @@ namespace TIP_var12BusinessLogic.BusinessLogic
             }
             else
             {
-                salStorage.Insert(model);
+                code = salStorage.Insert(model);
             }
+            return code;
         }
         public void Delete(SaleDocBindingModel model)
         {

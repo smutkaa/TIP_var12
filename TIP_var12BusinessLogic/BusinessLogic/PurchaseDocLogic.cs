@@ -28,8 +28,9 @@ namespace TIP_var12BusinessLogic.BusinessLogic
 
             return purStorage.GetFilteredList(model);
         }
-        public void CreateOrUpdate(PurchasedocsBindingModel model)
+        public int CreateOrUpdate(PurchasedocsBindingModel model)
         {
+            int code = 0;
             var element = purStorage.GetElement(new PurchasedocsBindingModel
             {
                 Date = model.Date,
@@ -47,8 +48,9 @@ namespace TIP_var12BusinessLogic.BusinessLogic
             }
             else
             {
-                purStorage.Insert(model);
+                code = purStorage.Insert(model);
             }
+            return code; 
         }
         public void Delete(PurchasedocsBindingModel model)
         {

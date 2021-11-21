@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TIP_var12BusinessLogic.BindingModel;
 using TIP_var12BusinessLogic.BusinessLogic;
+using TIP_var12BusinessLogic.ViewModels;
 using Unity;
 
 namespace TIP_var12
@@ -19,11 +20,17 @@ namespace TIP_var12
         public new IUnityContainer Container { get; set; }
 
         private readonly SaleDocLogic _logicC;
+        private readonly PostingJournalLogic _logicPJ;
+        private readonly AccountChartLogic logicAC;
+        private List<AccountingChartViewModel> listAC;
 
-        public FormSaleDocs(SaleDocLogic _logicC)
+        public FormSaleDocs(SaleDocLogic _logicC, PostingJournalLogic _logicPJ, AccountChartLogic logicAC)
         {
             InitializeComponent();
             this._logicC = _logicC;
+            this._logicPJ = _logicPJ;
+            this.logicAC = logicAC;
+            listAC = logicAC.Read(null);
 
         }
 
@@ -82,6 +89,7 @@ namespace TIP_var12
                     int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
                     try
                     {
+                        _logicPJ.Delete(new PostingJournalBindingModel { Saledocsid = id });
                         _logicC.Delete(new SaleDocBindingModel { Id = id });
                     }
                     catch (Exception ex)
@@ -120,5 +128,56 @@ namespace TIP_var12
 		{
             LoadData();
 		}
-	}
+
+        private void buttonPay_Click(object sender, EventArgs e)
+        {
+            int idSD = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+            var pay = _logicPJ.ReadDel(new PostingJournalBindingModel { Saledocsid = idSD, Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 50)?.Id), Creditaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 90)?.Id) });
+
+            if (pay.Count == 0)
+            {
+                var listDoc = _logicPJ.ReadDel(new PostingJournalBindingModel { Saledocsid = idSD });
+                decimal total = 0;
+                if (listDoc.Count != 0)
+                {
+                    foreach (var el in listDoc)
+                    {
+                        total += el.Total;
+                    }
+                }
+                if (dataGridView1.SelectedRows.Count == 1)
+                {
+                    _logicPJ.CreateOrUpdate(new PostingJournalBindingModel
+                    {
+                        Date = DateTime.Now,
+                        Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 50)?.Id),
+
+                        Creditaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 90)?.Id),
+                        Subcontocredit1 = Convert.ToString(dataGridView1.SelectedRows[0].Cells[4].Value),
+
+                        Total = total,
+                        Saledocsid = idSD
+                    });
+                }
+                MessageBox.Show("Оплата создана успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Документ уже оплачен", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonPostingJournal_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                var form = Container.Resolve<FormPostingJournal>();
+                form.Id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    LoadData();
+                }
+            }
+        }
+    }
 }

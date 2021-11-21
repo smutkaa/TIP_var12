@@ -17,16 +17,24 @@ namespace TIP_var12
     public partial class FormPurchaseDoc : Form
     {
         public int Id { set { id = value; } }
+        private int? id;
         private readonly CarLogic logicC;
         private readonly PurchaseDocLogic logicP;
         private readonly ProviderLogic logicProv;
-        private int? id;
-        public FormPurchaseDoc(CarLogic logicC , PurchaseDocLogic logicP, ProviderLogic logicProv)
+        private readonly PostingJournalLogic logicPJ;
+        private readonly AccountChartLogic  logicAC;
+        private List<AccountingChartViewModel> listAC;
+
+
+        public FormPurchaseDoc(CarLogic logicC , PurchaseDocLogic logicP, ProviderLogic logicProv, PostingJournalLogic logicPJ, AccountChartLogic logicAC)
         {
             InitializeComponent();
             this.logicC = logicC;
             this.logicP = logicP;
             this.logicProv = logicProv;
+            this.logicPJ = logicPJ;
+            this.logicAC = logicAC;
+            listAC = logicAC.Read(null);
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -63,7 +71,9 @@ namespace TIP_var12
             }
             try
             {
-                logicP.CreateOrUpdate(new PurchasedocsBindingModel
+                var cars = logicC.Read(new CarBindingModel { Id = Convert.ToInt32(comboBoxCar.SelectedValue) })?[0];
+                
+                int code = logicP.CreateOrUpdate(new PurchasedocsBindingModel
                 {
                     Id = id,
                     Date = dateTimePicker.Value,
@@ -71,7 +81,7 @@ namespace TIP_var12
                     Providerid = Convert.ToInt32(comboBoxProvider.SelectedValue),
                     Carid = Convert.ToInt32(comboBoxCar.SelectedValue),
                 });
-                var cars = logicC.Read(new CarBindingModel { Id = Convert.ToInt32(comboBoxCar.SelectedValue) })?[0];
+                
                 logicC.CreateOrUpdate(new CarBindingModel
                 {
                     Id = Convert.ToInt32(comboBoxCar.SelectedValue),
@@ -80,6 +90,17 @@ namespace TIP_var12
                     Retailprice = Convert.ToDecimal(textBoxRetailPrice.Text),
                     Seriesid = cars.Seriesid
                 });
+                logicPJ.CreateOrUpdate(new PostingJournalBindingModel
+                {
+                    Date = dateTimePicker.Value,
+                    Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 41)?.Id),
+                    Subcontodebit1 = cars.Name,
+                    Subcontodebit2 = cars.SeriesName,
+                    Creditaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 60)?.Id),
+                    Subcontocredit1 = Convert.ToString(comboBoxProvider.Text),
+                    Total = Convert.ToDecimal(textBoxCout.Text) * Convert.ToDecimal(textBoxPurchasePrice.Text),
+                    Purchasedocid = code
+                }) ;
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
                 Close();

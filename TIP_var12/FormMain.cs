@@ -84,5 +84,11 @@ namespace TIP_var12
             var form = Container.Resolve<FormSaleDocs>();
             form.ShowDialog();
         }
+
+        private void журналПроводокToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormPostingJournal>();
+            form.ShowDialog();
+        }
     }
 }

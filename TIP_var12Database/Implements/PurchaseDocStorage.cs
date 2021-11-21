@@ -71,7 +71,7 @@ namespace TIP_var12Database.Implements
                 } : null;
             }
         }
-        public void Insert(PurchasedocsBindingModel model)
+        public int Insert(PurchasedocsBindingModel model)
         {
             using (var context = new mydbContext())
             {
@@ -85,6 +85,8 @@ namespace TIP_var12Database.Implements
                         doc = CreateModel(model, doc, context);
 
                         transaction.Commit();
+                        Purchasedocs element = context.Purchasedocs.FirstOrDefault(rec => rec.Purchasedocid == doc.Purchasedocid);
+                        return element.Purchasedocid;
                     }
                     catch
                     {

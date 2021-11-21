@@ -20,12 +20,15 @@ namespace TIP_var12
         public new IUnityContainer Container { get; set; }
         private readonly PurchaseDocLogic _logicC;
         private readonly ProviderLogic _logicProv;
+        private readonly PostingJournalLogic _logicPJ;
+        
 
-        public FormPurchaseDocs(PurchaseDocLogic _logicC, ProviderLogic _logicProv)
+        public FormPurchaseDocs(PurchaseDocLogic _logicC, ProviderLogic _logicProv, PostingJournalLogic _logicPJ)
         {
             InitializeComponent();
             this._logicC = _logicC;
             this._logicProv = _logicProv;
+            this._logicPJ = _logicPJ;
         }
         private void FormPurchaseDocs_Load(object sender, EventArgs e)
         {
@@ -62,6 +65,7 @@ namespace TIP_var12
                     int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
                     try
                     {
+                        _logicPJ.Delete(new PostingJournalBindingModel { Purchasedocid = id });
                         _logicC.Delete(new PurchasedocsBindingModel { Id = id });
                     }
                     catch (Exception ex)
@@ -143,6 +147,19 @@ namespace TIP_var12
         private void buttonAll_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void buttonPostingJournal_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                var form = Container.Resolve<FormPostingJournal>();
+                form.Id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    LoadData();
+                }
+            }
         }
     }
 }

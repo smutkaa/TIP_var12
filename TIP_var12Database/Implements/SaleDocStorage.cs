@@ -17,7 +17,6 @@ namespace TIP_var12Database.Implements
         {
             using (var context = new mydbContext())
             {
-
                 return context.Saledocs
                .Include(rec => rec.Saleservices)
                .ThenInclude(rec => rec.Services)
@@ -83,7 +82,7 @@ namespace TIP_var12Database.Implements
                 } : null;
             }
         }
-        public void Insert(SaleDocBindingModel model)
+        public int Insert(SaleDocBindingModel model)
         {
             using (var context = new mydbContext())
             {
@@ -95,8 +94,10 @@ namespace TIP_var12Database.Implements
                         context.Saledocs.Add(aircraft);
                         context.SaveChanges();
                         aircraft = CreateModel(model, aircraft, context);
-
+                       
                         transaction.Commit();
+                        Saledocs element = context.Saledocs.FirstOrDefault(rec => rec.Saledocsid == aircraft.Saledocsid);
+                        return element.Saledocsid;
                     }
                     catch
                     {

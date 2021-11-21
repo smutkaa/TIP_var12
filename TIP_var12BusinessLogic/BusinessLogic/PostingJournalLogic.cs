@@ -28,5 +28,52 @@ namespace TIP_var12BusinessLogic.BusinessLogic
             }
             return _pjStorage.GetFilteredList(model);
         }
+        public List<PostingJournalBindingModel> ReadDel(PostingJournalBindingModel model)
+        {
+
+            if (model.Purchasedocid != null || model.Saledocsid != null)
+            {
+                return _pjStorage.GetDocumentNotes(model);
+            }
+            else if (model.Saledocsid != null && model.Creditaccount != null && model.Debitaccount != null)
+            {
+                return _pjStorage.GetPay(model);
+            }
+            return null;
+
+        }
+        public void CreateOrUpdate(PostingJournalBindingModel model)
+        {
+            var element = _pjStorage.GetElementUpdate(new PostingJournalBindingModel { Saledocsid = model.Saledocsid, Purchasedocid = model.Purchasedocid });
+           
+            if (element != null && (element.Purchasedocid != model.Purchasedocid || element.Saledocsid != model.Saledocsid))
+            {
+                throw new Exception("Не найдена такая операция");
+            }
+            if (model.Id.HasValue)
+            {
+                _pjStorage.Update(model);
+            }
+            else
+            {
+                _pjStorage.Insert(model);
+            }
+        }
+        public void Delete(PostingJournalBindingModel model)
+        {
+            
+            var elements = _pjStorage.GetDocumentNotes(new PostingJournalBindingModel
+            {
+                Purchasedocid = model.Purchasedocid,
+                Saledocsid = model.Saledocsid
+            });
+            if (elements.Count == 0)
+            {
+                throw new Exception("Проводки по этому документу не найдены");
+            }
+            foreach(var el in elements) {
+                _pjStorage.Delete(el);
+            }
+        }
     }
 }

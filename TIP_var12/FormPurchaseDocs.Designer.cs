@@ -44,6 +44,7 @@ namespace TIP_var12
             this.buttonAdd = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.buttonPostingJournal = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,7 +136,7 @@ namespace TIP_var12
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(600, 298);
+            this.buttonDelete.Location = new System.Drawing.Point(600, 214);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(83, 23);
             this.buttonDelete.TabIndex = 12;
@@ -145,7 +146,7 @@ namespace TIP_var12
             // 
             // buttonChange
             // 
-            this.buttonChange.Location = new System.Drawing.Point(600, 255);
+            this.buttonChange.Location = new System.Drawing.Point(600, 171);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(83, 23);
             this.buttonChange.TabIndex = 11;
@@ -155,7 +156,7 @@ namespace TIP_var12
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(600, 212);
+            this.buttonAdd.Location = new System.Drawing.Point(600, 128);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(83, 23);
             this.buttonAdd.TabIndex = 10;
@@ -183,11 +184,22 @@ namespace TIP_var12
             this.checkBox2.Text = "Все";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
+            // buttonPostingJournal
+            // 
+            this.buttonPostingJournal.Location = new System.Drawing.Point(600, 405);
+            this.buttonPostingJournal.Name = "buttonPostingJournal";
+            this.buttonPostingJournal.Size = new System.Drawing.Size(75, 23);
+            this.buttonPostingJournal.TabIndex = 15;
+            this.buttonPostingJournal.Text = "Проводки";
+            this.buttonPostingJournal.UseVisualStyleBackColor = true;
+            this.buttonPostingJournal.Click += new System.EventHandler(this.buttonPostingJournal_Click);
+            // 
             // FormPurchaseDocs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(695, 461);
+            this.Controls.Add(this.buttonPostingJournal);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.buttonDelete);
@@ -229,5 +241,6 @@ namespace TIP_var12
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Button buttonPostingJournal;
     }
 }

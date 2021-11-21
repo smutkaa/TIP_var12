@@ -23,17 +23,25 @@ namespace TIP_var12
 
 		public int Id { set { id = value; } }
 		private int? id;
-
+		SaleDocViewModel view;
 		private readonly SaleDocLogic logicSD;
 		private readonly RequestLogiccs logicReq;
 
+		private readonly PostingJournalLogic logicPJ;
+		private Requests requests;
+		private readonly AccountChartLogic logicAC;
+		private List<AccountingChartViewModel> listAC;
+
 		private Dictionary<int, (string, int)> saleDocServices;
 
-		public FormSaleDoc(SaleDocLogic logicSD, RequestLogiccs logicReq)
+		public FormSaleDoc(SaleDocLogic logicSD, RequestLogiccs logicReq, PostingJournalLogic logicPJ, AccountChartLogic logicAC)
 		{
 			InitializeComponent();
 			this.logicSD = logicSD;
 			this.logicReq = logicReq;
+			this.logicPJ = logicPJ;
+			this.logicAC = logicAC;
+			listAC = logicAC.Read(null);
 		}
 
 		private void buttonSave_Click(object sender, EventArgs e)
@@ -53,7 +61,8 @@ namespace TIP_var12
 				MessageBox.Show("Заполните ФИО", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
-			DateTime? dateReq = logicReq.Read(new RequestBindingModel { Id = Convert.ToInt32(comboBoxRequest.SelectedValue)})?[0].Date;
+			RequestViewModel request = logicReq.Read(new RequestBindingModel { Id = Convert.ToInt32(comboBoxRequest.SelectedValue) })?[0];
+			DateTime? dateReq = request.Date;
 			if (dateReq > dateTimePicker.Value)
 			{
 				MessageBox.Show("Дата заявки не может быть больше даты в документе", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -61,7 +70,7 @@ namespace TIP_var12
 			}
 			try
 			{
-				logicSD.CreateOrUpdate(new SaleDocBindingModel
+				int code = logicSD.CreateOrUpdate(new SaleDocBindingModel
 				{
 					Id = id,
 					Date = dateTimePicker.Value,
@@ -70,7 +79,41 @@ namespace TIP_var12
 					SaleDocSevices = saleDocServices,
 					Total = RequestRemainder()
 
-			});
+				});
+				
+				logicPJ.CreateOrUpdate(new PostingJournalBindingModel
+				{
+					Date = dateTimePicker.Value,
+					Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 90)?.Id),
+					Subcontodebit1 = Convert.ToString(comboBoxRequest.SelectedValue),
+
+					Creditaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 41)?.Id),
+					Subcontocredit1 = requests.Car.Name,
+					Subcontocredit2 = requests.Car.Series.Name,
+					Total = requests.Quantity * requests.Car.Retailprice,
+					Saledocsid = code
+				}); 
+				if (saleDocServices != null)
+				{
+					using(var context = new mydbContext())
+                    {
+						foreach (var temp in saleDocServices)
+						{
+							var service = context.Services.Include(rec =>rec.Subdivision).FirstOrDefault(rec => rec.Servicesid == temp.Key);
+							logicPJ.CreateOrUpdate(new PostingJournalBindingModel
+							{
+								Date = dateTimePicker.Value,
+								Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 90)?.Id),
+								Subcontodebit1 = Convert.ToString(comboBoxRequest.SelectedValue),
+
+								Creditaccount = service.Subdivision.Accountchartid,
+								Subcontocredit1 = service.Subdivision.Name,
+								Total = service.Price * temp.Value.Item2,
+								Saledocsid = code
+							});
+						}
+					}
+				}
 				MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				DialogResult = DialogResult.OK;
 				Close();
@@ -85,9 +128,10 @@ namespace TIP_var12
 			decimal price = 0; 
 			
 			var context = new mydbContext();
-			var requests = context.Requests
+			requests = context.Requests
 				.Include(rec => rec.Car)
-				.FirstOrDefault(rec => rec.Requestsid == Convert.ToInt32(comboBoxRequest.SelectedValue));
+				.ThenInclude(rec => rec.Series)
+				.FirstOrDefault(rec => rec.Requestsid == Convert.ToInt32(comboBoxRequest.SelectedValue)) ;
 			price = requests.Quantity * requests.Car.Retailprice;
 
 			foreach (var ser in saleDocServices)
@@ -148,7 +192,7 @@ namespace TIP_var12
 			{
 				try
 				{
-					SaleDocViewModel view = logicSD.Read(new SaleDocBindingModel { Id = id.Value })?[0];
+					view = logicSD.Read(new SaleDocBindingModel { Id = id.Value })?[0];
 					if (view != null)
 					{
 						dateTimePicker.Value = view.Date;

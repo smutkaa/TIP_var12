@@ -39,11 +39,11 @@ namespace TIP_var12
             this.подразделенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.услугиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.документпродажаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.заявкаToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.документToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.документзакупкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.журналПроводокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.заявкаToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.документToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -132,7 +132,20 @@ namespace TIP_var12
             this.документпродажаToolStripMenuItem.Name = "документпродажаToolStripMenuItem";
             this.документпродажаToolStripMenuItem.Size = new System.Drawing.Size(126, 20);
             this.документпродажаToolStripMenuItem.Text = "Документ-продажа";
-          
+            // 
+            // заявкаToolStripMenuItem1
+            // 
+            this.заявкаToolStripMenuItem1.Name = "заявкаToolStripMenuItem1";
+            this.заявкаToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
+            this.заявкаToolStripMenuItem1.Text = "Заявка";
+            this.заявкаToolStripMenuItem1.Click += new System.EventHandler(this.заявкаToolStripMenuItem1_Click);
+            // 
+            // документToolStripMenuItem1
+            // 
+            this.документToolStripMenuItem1.Name = "документToolStripMenuItem1";
+            this.документToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
+            this.документToolStripMenuItem1.Text = "Документ";
+            this.документToolStripMenuItem1.Click += new System.EventHandler(this.документToolStripMenuItem1_Click);
             // 
             // документзакупкаToolStripMenuItem
             // 
@@ -147,26 +160,13 @@ namespace TIP_var12
             this.журналПроводокToolStripMenuItem.Name = "журналПроводокToolStripMenuItem";
             this.журналПроводокToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
             this.журналПроводокToolStripMenuItem.Text = "Журнал проводок";
+            this.журналПроводокToolStripMenuItem.Click += new System.EventHandler(this.журналПроводокToolStripMenuItem_Click);
             // 
             // отчетToolStripMenuItem
             // 
             this.отчетToolStripMenuItem.Name = "отчетToolStripMenuItem";
             this.отчетToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.отчетToolStripMenuItem.Text = "Отчет";
-            // 
-            // заявкаToolStripMenuItem1
-            // 
-            this.заявкаToolStripMenuItem1.Name = "заявкаToolStripMenuItem1";
-            this.заявкаToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.заявкаToolStripMenuItem1.Text = "Заявка";
-            this.заявкаToolStripMenuItem1.Click += new System.EventHandler(this.заявкаToolStripMenuItem1_Click);
-            // 
-            // документToolStripMenuItem1
-            // 
-            this.документToolStripMenuItem1.Name = "документToolStripMenuItem1";
-            this.документToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.документToolStripMenuItem1.Text = "Документ";
-            this.документToolStripMenuItem1.Click += new System.EventHandler(this.документToolStripMenuItem1_Click);
             // 
             // FormMain
             // 

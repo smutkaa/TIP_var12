@@ -47,7 +47,9 @@ namespace TIP_var12
 			currentContainer.RegisterType<IRequest, RequestStorage>(new
 			HierarchicalLifetimeManager());
 			currentContainer.RegisterType<ISaleDoc, SaleDocStorage>(new
-			HierarchicalLifetimeManager());
+			HierarchicalLifetimeManager()); 
+			currentContainer.RegisterType<IPostingJournal, PostingJournalStorage>(new
+			 HierarchicalLifetimeManager());
 
 
 
@@ -61,6 +63,7 @@ namespace TIP_var12
 			currentContainer.RegisterType<PurchaseDocLogic>(new HierarchicalLifetimeManager());
 			currentContainer.RegisterType<RequestLogiccs>(new HierarchicalLifetimeManager());
 			currentContainer.RegisterType<SaleDocLogic>(new HierarchicalLifetimeManager());
+			currentContainer.RegisterType<PostingJournalLogic>(new HierarchicalLifetimeManager());
 
 			return currentContainer;
 		}

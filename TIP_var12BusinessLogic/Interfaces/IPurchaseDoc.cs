@@ -11,7 +11,7 @@ namespace TIP_var12BusinessLogic.Interfaces
         List<PurchasedocsViewModel> GetFullList();
         PurchasedocsViewModel GetElement(PurchasedocsBindingModel model);
         List<PurchasedocsViewModel> GetFilteredList(PurchasedocsBindingModel model);
-        void Insert(PurchasedocsBindingModel model);
+        int Insert(PurchasedocsBindingModel model);
         void Update(PurchasedocsBindingModel model);
         void Delete(PurchasedocsBindingModel model);
     }

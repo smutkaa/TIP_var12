@@ -8,6 +8,8 @@ namespace TIP_var12BusinessLogic.BindingModel
     {
         public int? Id { get; set; }
         public DateTime Date { get; set; }
+        public DateTime DateFrom { get; set; }
+        public DateTime DateTo { get; set; }
         public int Debitaccount { get; set; }
         public string Subcontodebit1 { get; set; }
         public string Subcontodebit2 { get; set; }

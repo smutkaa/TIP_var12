@@ -10,7 +10,14 @@ namespace TIP_var12BusinessLogic.Interfaces
     {
         List<PostingJournalViewModel> GetFullList();
         List<PostingJournalViewModel> GetFilteredList(PostingJournalBindingModel model);
-        PostingJournalViewModel GetElement(PostingJournalBindingModel model);
+        List<PostingJournalBindingModel> GetDocumentNotes(PostingJournalBindingModel model);
+        List<PostingJournalBindingModel> GetPay(PostingJournalBindingModel model);
 
+        PostingJournalViewModel GetElement(PostingJournalBindingModel model);
+        PostingJournalViewModel GetElementUpdate(PostingJournalBindingModel model);
+
+        void Insert(PostingJournalBindingModel model);
+        void Update(PostingJournalBindingModel model);
+        void Delete(PostingJournalBindingModel model);
     }
 }
