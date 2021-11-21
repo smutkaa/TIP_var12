@@ -36,10 +36,8 @@ namespace TIP_var12Database
         {
             if (!optionsBuilder.IsConfigured)
             {
-#pragma warning disable CS1030 // #warning: "To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.'
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=mydb;Username=postgres;Password=postgres");
-#pragma warning restore CS1030 // #warning: "To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.'
             }
         }
 
@@ -72,10 +70,12 @@ namespace TIP_var12Database
 
             modelBuilder.Entity<Cars>(entity =>
             {
-                entity.HasKey(e => e.Carid) 
+                entity.HasKey(e => e.Carid)
                     .HasName("cars_pkey");
 
                 entity.ToTable("cars");
+
+                entity.HasIndex(e => e.Seriesid);
 
                 entity.Property(e => e.Carid).HasColumnName("carid");
 
@@ -119,7 +119,21 @@ namespace TIP_var12Database
             {
                 entity.ToTable("postingjournal");
 
+                entity.HasIndex(e => e.Creditaccount);
+
+                entity.HasIndex(e => e.Debitaccount);
+
+                entity.HasIndex(e => e.Purchasedocid);
+
+                entity.HasIndex(e => e.Saledocsid);
+
                 entity.Property(e => e.Postingjournalid).HasColumnName("postingjournalid");
+
+                entity.Property(e => e.Comment)
+                    .HasColumnName("comment")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.Count).HasColumnName("count");
 
                 entity.Property(e => e.Creditaccount).HasColumnName("creditaccount");
 
@@ -198,6 +212,10 @@ namespace TIP_var12Database
 
                 entity.ToTable("purchasedocs");
 
+                entity.HasIndex(e => e.Carid);
+
+                entity.HasIndex(e => e.Providerid);
+
                 entity.Property(e => e.Purchasedocid).HasColumnName("purchasedocid");
 
                 entity.Property(e => e.Carid).HasColumnName("carid");
@@ -224,6 +242,10 @@ namespace TIP_var12Database
             modelBuilder.Entity<Requests>(entity =>
             {
                 entity.ToTable("requests");
+
+                entity.HasIndex(e => e.Carid);
+
+                entity.HasIndex(e => e.Customerid);
 
                 entity.Property(e => e.Requestsid).HasColumnName("requestsid");
 
@@ -252,6 +274,8 @@ namespace TIP_var12Database
             {
                 entity.ToTable("saledocs");
 
+                entity.HasIndex(e => e.Requestsid);
+
                 entity.Property(e => e.Saledocsid).HasColumnName("saledocsid");
 
                 entity.Property(e => e.Date)
@@ -278,6 +302,10 @@ namespace TIP_var12Database
             modelBuilder.Entity<Saleservices>(entity =>
             {
                 entity.ToTable("saleservices");
+
+                entity.HasIndex(e => e.Saledocsid);
+
+                entity.HasIndex(e => e.Servicesid);
 
                 entity.Property(e => e.Saleservicesid).HasColumnName("saleservicesid");
 
@@ -318,6 +346,8 @@ namespace TIP_var12Database
             {
                 entity.ToTable("services");
 
+                entity.HasIndex(e => e.Subdivisionid);
+
                 entity.Property(e => e.Servicesid).HasColumnName("servicesid");
 
                 entity.Property(e => e.Name)
@@ -340,6 +370,8 @@ namespace TIP_var12Database
             modelBuilder.Entity<Subdivision>(entity =>
             {
                 entity.ToTable("subdivision");
+
+                entity.HasIndex(e => e.Accountchartid);
 
                 entity.Property(e => e.Subdivisionid).HasColumnName("subdivisionid");
 

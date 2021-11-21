@@ -86,19 +86,19 @@ namespace TIP_var12
         {
             if (dataGridView1.SelectedRows.Count == 1)
             {
-                if (dataGridView1.SelectedRows[0].Cells[9].Value != null)
+                if (dataGridView1.SelectedRows[0].Cells[10].Value != null)
                 {
                     var form = Container.Resolve<FormSaleDoc>();
-                    form.Id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[9].Value);
+                    form.Id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[10].Value);
                     if (form.ShowDialog() == DialogResult.OK)
                     {
                         LoadData();
                     }
                 }
-                else if (dataGridView1.SelectedRows[0].Cells[10].Value != null)
+                else if (dataGridView1.SelectedRows[0].Cells[11].Value != null)
                 {
                     var form = Container.Resolve<FormPurchaseDoc>();
-                    form.Id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[10].Value);
+                    form.Id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[11].Value);
                     if (form.ShowDialog() == DialogResult.OK)
                     {
                         LoadData();

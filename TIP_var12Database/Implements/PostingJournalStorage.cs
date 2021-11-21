@@ -25,7 +25,8 @@ namespace TIP_var12Database.Implements
                     Creditaccount = rec.CreditaccountNavigation.Number,
                     Subcontocredit1 =rec.Subcontocredit1,
                     Subcontocredit2 = rec.Subcontocredit2,
-                    Total = rec.Total,
+                        Count = rec.Count,
+                        Total = rec.Total,
                     Saledocsid = rec.Saledocsid,
                     Purchasedocid = rec.Purchasedocid
                 })
@@ -43,8 +44,13 @@ namespace TIP_var12Database.Implements
             using (var context = new mydbContext())
             {
                 return context.Postingjournal
-                    .Where(rec => (rec.Date >= model.DateFrom && rec.Date <= model.DateTo) || (rec.Saledocsid == model.Saledocsid && model.Saledocsid != null)
-                    || (rec.Purchasedocid == model.Purchasedocid && model.Purchasedocid != null))
+                    .Where(rec => (rec.Date >= model.DateFrom && rec.Date <= model.DateTo)
+                    ||
+                    (rec.Saledocsid == model.Saledocsid && model.Saledocsid != null) || (rec.Purchasedocid == model.Purchasedocid && model.Purchasedocid != null)
+                    ||
+                    (rec.Debitaccount == model.Debitaccount && rec.Subcontodebit1 == model.Subcontodebit1)
+                    || 
+                    rec.Creditaccount == model.Creditaccount && rec.Subcontocredit1 == model.Subcontocredit1)
                     .Select(rec => new PostingJournalViewModel
                     {
                         Id = rec.Postingjournalid,
@@ -55,6 +61,7 @@ namespace TIP_var12Database.Implements
                         Creditaccount = rec.CreditaccountNavigation.Number,
                         Subcontocredit1 = rec.Subcontocredit1,
                         Subcontocredit2 = rec.Subcontocredit2,
+                        Count = rec.Count,
                         Total = rec.Total,
                         Saledocsid = rec.Saledocsid,
                         Purchasedocid = rec.Purchasedocid
@@ -84,6 +91,7 @@ namespace TIP_var12Database.Implements
                         Creditaccount = rec.CreditaccountNavigation.Number,
                         Subcontocredit1 = rec.Subcontocredit1,
                         Subcontocredit2 = rec.Subcontocredit2,
+                        Count = rec.Count,
                         Total = rec.Total,
                         Saledocsid = rec.Saledocsid,
                         Purchasedocid = rec.Purchasedocid
@@ -131,6 +139,7 @@ namespace TIP_var12Database.Implements
                     Creditaccount = pj.Creditaccount,
                     Subcontocredit1 = pj.Subcontocredit1,
                     Subcontocredit2 = pj.Subcontocredit2,
+                    Count = pj.Count,
                     Total = pj.Total,
                     Saledocsid = pj.Saledocsid,
                     Purchasedocid = pj.Purchasedocid
@@ -157,6 +166,7 @@ namespace TIP_var12Database.Implements
                     Creditaccount = pj.Creditaccount,
                     Subcontocredit1 = pj.Subcontocredit1,
                     Subcontocredit2 = pj.Subcontocredit2,
+                    Count = pj.Count,
                     Total = pj.Total,
                     Saledocsid = pj.Saledocsid,
                     Purchasedocid = pj.Purchasedocid
@@ -235,6 +245,7 @@ namespace TIP_var12Database.Implements
             pj.Creditaccount = model.Creditaccount;
             pj.Subcontocredit1 = model.Subcontocredit1;
             pj.Subcontocredit2 = model.Subcontocredit2;
+            pj.Count = model.Count;
             pj.Total = model.Total;
             pj.Saledocsid = model.Saledocsid;
             pj.Purchasedocid = model.Purchasedocid;

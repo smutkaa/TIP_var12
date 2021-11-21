@@ -22,6 +22,8 @@ namespace TIP_var12BusinessLogic.ViewModels
         public string Subcontocredit1 { get; set; }
         [DisplayName("Субконто кредита")]
         public string Subcontocredit2 { get; set; }
+        [DisplayName("Количество")]
+        public int? Count { get; set; }
         [DisplayName("Сумма")]
         public decimal Total { get; set; }
         [DisplayName("Документ-продажа")]

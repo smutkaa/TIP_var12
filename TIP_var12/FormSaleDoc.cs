@@ -68,59 +68,80 @@ namespace TIP_var12
 				MessageBox.Show("Дата заявки не может быть больше даты в документе", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
-			try
+			int countRemains = 0;
+			List<PostingJournalViewModel> pjDebit = logicPJ.Read(new PostingJournalBindingModel { Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 41)?.Id), Subcontodebit1 = request.CarName });
+			List<PostingJournalViewModel> pjCredit = logicPJ.Read(new PostingJournalBindingModel { Creditaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 41)?.Id), Subcontocredit1 = request.CarName });
+
+			foreach (var deb in pjDebit)
 			{
-				int code = logicSD.CreateOrUpdate(new SaleDocBindingModel
+				countRemains += Convert.ToInt32(deb.Count);
+			}
+			foreach (var cre in pjCredit)
+			{
+				countRemains -= Convert.ToInt32(cre.Count);
+			}
+			if (countRemains >= request.Quantity)
+			{
+				try
 				{
-					Id = id,
-					Date = dateTimePicker.Value,
-					Requestsid = Convert.ToInt32(comboBoxRequest.SelectedValue),
-					Employee = textBoxFIO.Text,
-					SaleDocSevices = saleDocServices,
-					Total = RequestRemainder()
+					int code = logicSD.CreateOrUpdate(new SaleDocBindingModel
+					{
+						Id = id,
+						Date = dateTimePicker.Value,
+						Requestsid = Convert.ToInt32(comboBoxRequest.SelectedValue),
+						Employee = textBoxFIO.Text,
+						SaleDocSevices = saleDocServices,
+						Total = RequestRemainder()
 
-				});
-				
-				logicPJ.CreateOrUpdate(new PostingJournalBindingModel
-				{
-					Date = dateTimePicker.Value,
-					Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 90)?.Id),
-					Subcontodebit1 = Convert.ToString(comboBoxRequest.SelectedValue),
+					});
 
-					Creditaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 41)?.Id),
-					Subcontocredit1 = requests.Car.Name,
-					Subcontocredit2 = requests.Car.Series.Name,
-					Total = requests.Quantity * requests.Car.Retailprice,
-					Saledocsid = code
-				}); 
-				if (saleDocServices != null)
-				{
-					using(var context = new mydbContext())
-                    {
-						foreach (var temp in saleDocServices)
+					logicPJ.CreateOrUpdate(new PostingJournalBindingModel
+					{
+						Date = dateTimePicker.Value,
+						Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 90)?.Id),
+						Subcontodebit1 = Convert.ToString(comboBoxRequest.SelectedValue),
+
+						Creditaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 41)?.Id),
+						Subcontocredit1 = requests.Car.Name,
+						Subcontocredit2 = requests.Car.Series.Name,
+						Count = request.Quantity,
+						Total = requests.Quantity * requests.Car.Retailprice,
+						Saledocsid = code
+					});
+					if (saleDocServices != null)
+					{
+						using (var context = new mydbContext())
 						{
-							var service = context.Services.Include(rec =>rec.Subdivision).FirstOrDefault(rec => rec.Servicesid == temp.Key);
-							logicPJ.CreateOrUpdate(new PostingJournalBindingModel
+							foreach (var temp in saleDocServices)
 							{
-								Date = dateTimePicker.Value,
-								Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 90)?.Id),
-								Subcontodebit1 = Convert.ToString(comboBoxRequest.SelectedValue),
+								var service = context.Services.Include(rec => rec.Subdivision).FirstOrDefault(rec => rec.Servicesid == temp.Key);
+								logicPJ.CreateOrUpdate(new PostingJournalBindingModel
+								{
+									Date = dateTimePicker.Value,
+									Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 90)?.Id),
+									Subcontodebit1 = Convert.ToString(comboBoxRequest.SelectedValue),
 
-								Creditaccount = service.Subdivision.Accountchartid,
-								Subcontocredit1 = service.Subdivision.Name,
-								Total = service.Price * temp.Value.Item2,
-								Saledocsid = code
-							});
+									Creditaccount = service.Subdivision.Accountchartid,
+									Subcontocredit1 = service.Subdivision.Name,
+									Count = temp.Value.Item2,
+									Total = service.Price * temp.Value.Item2,
+									Saledocsid = code
+								});
+							}
 						}
 					}
+					MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					DialogResult = DialogResult.OK;
+					Close();
 				}
-				MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				DialogResult = DialogResult.OK;
-				Close();
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
 			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+				MessageBox.Show("Не хватает машин на складе", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 		private decimal RequestRemainder()

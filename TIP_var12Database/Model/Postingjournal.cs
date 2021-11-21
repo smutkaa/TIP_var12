@@ -20,6 +20,8 @@ namespace TIP_var12Database
         public decimal Total { get; set; }
         public int? Saledocsid { get; set; }
         public int? Purchasedocid { get; set; }
+        public string Comment { get; set; }
+        public int? Count { get; set; }
 
         public virtual Accountcharts CreditaccountNavigation { get; set; }
         public virtual Accountcharts DebitaccountNavigation { get; set; }

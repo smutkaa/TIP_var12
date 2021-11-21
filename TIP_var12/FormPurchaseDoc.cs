@@ -98,6 +98,7 @@ namespace TIP_var12
                     Subcontodebit2 = cars.SeriesName,
                     Creditaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 60)?.Id),
                     Subcontocredit1 = Convert.ToString(comboBoxProvider.Text),
+                    Count = Convert.ToInt32(textBoxCout.Text),
                     Total = Convert.ToDecimal(textBoxCout.Text) * Convert.ToDecimal(textBoxPurchasePrice.Text),
                     Purchasedocid = code
                 }) ;
