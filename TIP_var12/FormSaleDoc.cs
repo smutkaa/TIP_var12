@@ -78,7 +78,10 @@ namespace TIP_var12
 			}
 			foreach (var cre in pjCredit)
 			{
-				countRemains -= Convert.ToInt32(cre.Count);
+				if(cre.Saledocsid != id)
+                {
+					countRemains -= Convert.ToInt32(cre.Count);
+				}
 			}
 			if (countRemains >= request.Quantity)
 			{
@@ -94,39 +97,94 @@ namespace TIP_var12
 						Total = RequestRemainder()
 
 					});
-
-					logicPJ.CreateOrUpdate(new PostingJournalBindingModel
+					if (id.HasValue)
 					{
-						Date = dateTimePicker.Value,
-						Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 90)?.Id),
-						Subcontodebit1 = Convert.ToString(comboBoxRequest.SelectedValue),
-
-						Creditaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 41)?.Id),
-						Subcontocredit1 = requests.Car.Name,
-						Subcontocredit2 = requests.Car.Series.Name,
-						Count = request.Quantity,
-						Total = requests.Quantity * requests.Car.Retailprice,
-						Saledocsid = code
-					});
-					if (saleDocServices != null)
-					{
-						using (var context = new mydbContext())
+						int docPJ = logicPJ.Read(new PostingJournalBindingModel { Creditaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 41)?.Id), Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 90)?.Id), Saledocsid = id })[1].Id.Value;
+						logicPJ.CreateOrUpdate(new PostingJournalBindingModel
 						{
-							foreach (var temp in saleDocServices)
-							{
-								var service = context.Services.Include(rec => rec.Subdivision).FirstOrDefault(rec => rec.Servicesid == temp.Key);
-								logicPJ.CreateOrUpdate(new PostingJournalBindingModel
-								{
-									Date = dateTimePicker.Value,
-									Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 90)?.Id),
-									Subcontodebit1 = Convert.ToString(comboBoxRequest.SelectedValue),
+							Id = docPJ,
+							Date = dateTimePicker.Value,
+							Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 90)?.Id),
+							Subcontodebit1 = Convert.ToString(comboBoxRequest.SelectedValue),
 
-									Creditaccount = service.Subdivision.Accountchartid,
-									Subcontocredit1 = service.Subdivision.Name,
-									Count = temp.Value.Item2,
-									Total = service.Price * temp.Value.Item2,
-									Saledocsid = code
-								});
+							Creditaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 41)?.Id),
+							Subcontocredit1 = requests.Car.Name,
+							Subcontocredit2 = requests.Car.Series.Name,
+							Count = request.Quantity,
+							Total = requests.Quantity * requests.Car.Retailprice,
+							Saledocsid = id
+						});
+					}
+					else
+					{
+						logicPJ.CreateOrUpdate(new PostingJournalBindingModel
+						{
+							Date = dateTimePicker.Value,
+							Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 90)?.Id),
+							Subcontodebit1 = Convert.ToString(comboBoxRequest.SelectedValue),
+
+							Creditaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 41)?.Id),
+							Subcontocredit1 = requests.Car.Name,
+							Subcontocredit2 = requests.Car.Series.Name,
+							Count = request.Quantity,
+							Total = requests.Quantity * requests.Car.Retailprice,
+							Saledocsid = code
+						});
+					}
+					if (id != null)
+					{
+						logicPJ.Delete(new PostingJournalBindingModel { Saledocsid = id, Creditaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 20)?.Id) });
+						if (saleDocServices != null)
+						{
+							using (var context = new mydbContext())
+							{
+
+								foreach (var temp in saleDocServices)
+								{
+									var service = context.Services.Include(rec => rec.Subdivision).FirstOrDefault(rec => rec.Servicesid == temp.Key);
+									if (id != null)
+									{
+										int servicePJ = logicPJ.Read(new PostingJournalBindingModel { Creditaccount = service.Subdivision.Accountchartid, Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 90)?.Id), Saledocsid = id })[1].Id.Value;
+										logicPJ.CreateOrUpdate(new PostingJournalBindingModel
+										{
+											Date = dateTimePicker.Value,
+											Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 90)?.Id),
+											Subcontodebit1 = Convert.ToString(comboBoxRequest.SelectedValue),
+
+											Creditaccount = service.Subdivision.Accountchartid,
+											Subcontocredit1 = service.Subdivision.Name,
+											Count = temp.Value.Item2,
+											Total = service.Price * temp.Value.Item2,
+											Saledocsid = id
+										});
+									}
+								}
+							}
+						}
+					}
+					else
+					{
+						if (saleDocServices != null)
+						{
+							using (var context = new mydbContext())
+							{
+								foreach (var temp in saleDocServices)
+								{
+									var service = context.Services.Include(rec => rec.Subdivision).FirstOrDefault(rec => rec.Servicesid == temp.Key);
+
+									logicPJ.CreateOrUpdate(new PostingJournalBindingModel
+									{
+										Date = dateTimePicker.Value,
+										Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 90)?.Id),
+										Subcontodebit1 = Convert.ToString(comboBoxRequest.SelectedValue),
+
+										Creditaccount = service.Subdivision.Accountchartid,
+										Subcontocredit1 = service.Subdivision.Name,
+										Count = temp.Value.Item2,
+										Total = service.Price * temp.Value.Item2,
+										Saledocsid = code
+									});
+								}
 							}
 						}
 					}
@@ -139,8 +197,8 @@ namespace TIP_var12
 					MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
-            else
-            {
+			else
+			{
 				MessageBox.Show("Не хватает машин на складе", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}

@@ -115,7 +115,7 @@ namespace TIP_var12Database.Implements
                 {
                     try
                     {
-                        var element = context.Saledocs.FirstOrDefault(rec => rec.Saledocsid==  model.Id);
+                        var element = context.Saledocs.FirstOrDefault(rec => rec.Saledocsid ==  model.Id);
                         if (element == null)
                         {
                             throw new Exception("Элемент не найден");
@@ -169,11 +169,14 @@ namespace TIP_var12Database.Implements
                 var saleDocService = context.Saleservices.Where(rec => rec.Saledocsid == model.Id.Value).ToList();
                 // удалили те, которых нет в модели
                 context.Saleservices.RemoveRange(saleDocService.Where(rec => !model.SaleDocSevices.ContainsKey(rec.Servicesid)).ToList());
+                var newTablePart = saleDocService.Where(rec => model.SaleDocSevices.ContainsKey(rec.Servicesid)).ToList();
+
                 context.SaveChanges();
                 // обновили количество у существующих записей
-                foreach (var updateComponent in saleDocService)
+                foreach (var updateComponent in newTablePart)
                 {
-                    updateComponent.Number = model.SaleDocSevices[updateComponent.Number].Item2;
+                    updateComponent.Number = model.SaleDocSevices[updateComponent.Servicesid].Item2;
+
                     model.SaleDocSevices.Remove(updateComponent.Servicesid);
                 }
                 context.SaveChanges();

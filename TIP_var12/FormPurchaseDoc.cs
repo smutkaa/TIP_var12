@@ -71,6 +71,7 @@ namespace TIP_var12
             }
             try
             {
+
                 var cars = logicC.Read(new CarBindingModel { Id = Convert.ToInt32(comboBoxCar.SelectedValue) })?[0];
                 
                 int code = logicP.CreateOrUpdate(new PurchasedocsBindingModel
@@ -90,18 +91,39 @@ namespace TIP_var12
                     Retailprice = Convert.ToDecimal(textBoxRetailPrice.Text),
                     Seriesid = cars.Seriesid
                 });
-                logicPJ.CreateOrUpdate(new PostingJournalBindingModel
+                if (id.HasValue)
                 {
-                    Date = dateTimePicker.Value,
-                    Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 41)?.Id),
-                    Subcontodebit1 = cars.Name,
-                    Subcontodebit2 = cars.SeriesName,
-                    Creditaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 60)?.Id),
-                    Subcontocredit1 = Convert.ToString(comboBoxProvider.Text),
-                    Count = Convert.ToInt32(textBoxCout.Text),
-                    Total = Convert.ToDecimal(textBoxCout.Text) * Convert.ToDecimal(textBoxPurchasePrice.Text),
-                    Purchasedocid = code
-                }) ;
+                    int docPJ = logicPJ.Read(new PostingJournalBindingModel { Creditaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 60)?.Id), Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 41)?.Id), Purchasedocid = id })[0].Id.Value;
+                    logicPJ.CreateOrUpdate(new PostingJournalBindingModel
+                    {
+                        Id = docPJ,
+                        Date = dateTimePicker.Value,
+                        Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 41)?.Id),
+                        Subcontodebit1 = cars.Name,
+                        Subcontodebit2 = cars.SeriesName,
+                        Creditaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 60)?.Id),
+                        Subcontocredit1 = Convert.ToString(comboBoxProvider.Text),
+                        Count = Convert.ToInt32(textBoxCout.Text),
+                        Total = Convert.ToDecimal(textBoxCout.Text) * Convert.ToDecimal(textBoxPurchasePrice.Text),
+                        Purchasedocid = id
+                    });
+                }
+                else
+                {
+                    logicPJ.CreateOrUpdate(new PostingJournalBindingModel
+                    {
+                        Date = dateTimePicker.Value,
+                        Debitaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 41)?.Id),
+                        Subcontodebit1 = cars.Name,
+                        Subcontodebit2 = cars.SeriesName,
+                        Creditaccount = Convert.ToInt32(listAC.FirstOrDefault(a => a.Number == 60)?.Id),
+                        Subcontocredit1 = Convert.ToString(comboBoxProvider.Text),
+                        Count = Convert.ToInt32(textBoxCout.Text),
+                        Total = Convert.ToDecimal(textBoxCout.Text) * Convert.ToDecimal(textBoxPurchasePrice.Text),
+                        Purchasedocid = code
+                    });
+                }
+               
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
                 Close();

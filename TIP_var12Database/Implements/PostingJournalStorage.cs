@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using TIP_var12BusinessLogic.BindingModel;
 using TIP_var12BusinessLogic.Interfaces;
 using TIP_var12BusinessLogic.ViewModels;
@@ -212,8 +214,10 @@ namespace TIP_var12Database.Implements
                         context.SaveChanges();
                         transaction.Commit();
                     }
-                    catch
+                    catch(DbUpdateException ex)
                     {
+                        MessageBox.Show(Convert.ToString(ex.InnerException), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                      
                         transaction.Rollback();
                         throw;
                     }
@@ -249,6 +253,7 @@ namespace TIP_var12Database.Implements
             pj.Total = model.Total;
             pj.Saledocsid = model.Saledocsid;
             pj.Purchasedocid = model.Purchasedocid;
+            pj.Comment = model.Comment;
             return pj;
         }
     }

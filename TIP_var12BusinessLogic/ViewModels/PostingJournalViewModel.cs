@@ -7,6 +7,7 @@ namespace TIP_var12BusinessLogic.ViewModels
 {
     public class PostingJournalViewModel
     {
+        [DisplayName("Номер")]
         public int? Id { get; set; }
         [DisplayName("Дата")]
         public DateTime Date { get; set; }

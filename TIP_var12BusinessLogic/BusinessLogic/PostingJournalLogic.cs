@@ -30,14 +30,13 @@ namespace TIP_var12BusinessLogic.BusinessLogic
         }
         public List<PostingJournalBindingModel> ReadDel(PostingJournalBindingModel model)
         {
-
+            if (model.Saledocsid != null && model.Creditaccount != 0 && model.Debitaccount != 0)
+            {
+                return _pjStorage.GetPay(model);
+            }
             if (model.Purchasedocid != null || model.Saledocsid != null)
             {
                 return _pjStorage.GetDocumentNotes(model);
-            }
-            else if (model.Saledocsid != null && model.Creditaccount != null && model.Debitaccount != null)
-            {
-                return _pjStorage.GetPay(model);
             }
             return null;
 
@@ -71,9 +70,14 @@ namespace TIP_var12BusinessLogic.BusinessLogic
             {
                 throw new Exception("Проводки по этому документу не найдены");
             }
-            foreach(var el in elements) {
-                _pjStorage.Delete(el);
+            if(model.Creditaccount != 0)
+            {
+                foreach (var el in elements)
+                {
+                    _pjStorage.Delete(el);
+                }
             }
+           
         }
     }
 }

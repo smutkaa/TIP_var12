@@ -17,7 +17,7 @@ namespace TIP_var12BusinessLogic.BindingModel
         public string Subcontocredit1 { get; set; }
         public string Subcontocredit2 { get; set; }
         public int? Count { get; set; }
-        
+        public string Comment { get; set; }
         public decimal Total { get; set; }
         public int? Saledocsid { get; set; }
         public int? Purchasedocid { get; set; }
