@@ -13,9 +13,9 @@ namespace TIP_var12BusinessLogic.ViewModels
         public DateTime Date { get; set; }
         [DisplayName("ДТ")]
         public int Debitaccount { get; set; }
-        [DisplayName("Субконто дебита")]
+        [DisplayName("Субконто дебета")]
         public string Subcontodebit1 { get; set; }
-        [DisplayName("Субконто дебита")]
+        [DisplayName("Субконто дебета")]
         public string Subcontodebit2 { get; set; }
         [DisplayName("КТ")]
         public int Creditaccount { get; set; }

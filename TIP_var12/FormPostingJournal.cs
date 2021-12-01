@@ -21,6 +21,8 @@ namespace TIP_var12
         private readonly PostingJournalLogic _logicPJ;
         public int Id { set { id = value; } }
         private int? id;
+        public string Document { set { doc = value; } }
+        private string doc;
         public FormPostingJournal(PostingJournalLogic _logicPJ)
         {
             InitializeComponent();
@@ -35,7 +37,16 @@ namespace TIP_var12
         {
             if (id.HasValue)
             {
-                var list = _logicPJ.Read(new PostingJournalBindingModel { Purchasedocid = id, Saledocsid = id });
+                List<PostingJournalViewModel> list = null;
+                if (doc == "purchase")
+                {
+                    list = _logicPJ.Read(new PostingJournalBindingModel { Purchasedocid = id});
+                }
+                else if(doc == "sale")
+                {
+                    list = _logicPJ.Read(new PostingJournalBindingModel { Saledocsid = id });
+                }
+               
                 if (list != null)
                 {
                     dataGridView1.DataSource = list;

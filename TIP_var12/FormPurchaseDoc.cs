@@ -71,7 +71,6 @@ namespace TIP_var12
             }
             try
             {
-
                 var cars = logicC.Read(new CarBindingModel { Id = Convert.ToInt32(comboBoxCar.SelectedValue) })?[0];
                 
                 int code = logicP.CreateOrUpdate(new PurchasedocsBindingModel

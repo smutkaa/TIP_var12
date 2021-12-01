@@ -97,7 +97,7 @@ namespace TIP_var12
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 72);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1034, 344);
+            this.dataGridView1.Size = new System.Drawing.Size(1148, 344);
             this.dataGridView1.TabIndex = 27;
             // 
             // buttonDocument
@@ -114,7 +114,7 @@ namespace TIP_var12
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1083, 437);
+            this.ClientSize = new System.Drawing.Size(1172, 437);
             this.Controls.Add(this.buttonDocument);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonFiltred);

@@ -154,6 +154,7 @@ namespace TIP_var12
             if (dataGridView1.SelectedRows.Count == 1)
             {
                 var form = Container.Resolve<FormPostingJournal>();
+                form.Document = "purchase";
                 form.Id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
