@@ -10,17 +10,16 @@ using System.Windows.Forms;
 
 namespace TIP_var12
 {
-    public partial class FormReport : Form
+    public partial class FormReportPJ : Form
     {
-        public FormReport()
+        public FormReportPJ()
         {
             InitializeComponent();
         }
 
-        private void FormReport_Load(object sender, EventArgs e)
+        private void FormReportPJ_Load(object sender, EventArgs e)
         {
 
-            this.reportViewer1.RefreshReport();
         }
     }
 }

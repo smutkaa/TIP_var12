@@ -234,6 +234,12 @@
     <Compile Include="FormReport.Designer.cs">
       <DependentUpon>FormReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReportPJ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportPJ.Designer.cs">
+      <DependentUpon>FormReportPJ.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormRequest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -324,6 +330,9 @@
     <EmbeddedResource Include="FormReport.resx">
       <DependentUpon>FormReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormReportPJ.resx">
+      <DependentUpon>FormReportPJ.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormRequest.resx">
       <DependentUpon>FormRequest.cs</DependentUpon>
     </EmbeddedResource>
@@ -360,8 +369,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ReportPJCar.rdlc" />
     <EmbeddedResource Include="ReportRequest.rdlc" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\TIP_var12BusinessLogic.ViewModels.ReportCarsViewModel.datasource" />
+    <None Include="Properties\DataSources\TIP_var12BusinessLogic.ViewModels.ReportRequestViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
