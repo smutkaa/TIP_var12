@@ -29,88 +29,69 @@ namespace TIP_var12
         /// </summary>
         private void InitializeComponent()
         {
-			this.labelSeries = new System.Windows.Forms.Label();
-			this.textBoxProvider = new System.Windows.Forms.TextBox();
-			this.buttonDelete = new System.Windows.Forms.Button();
-			this.buttonChange = new System.Windows.Forms.Button();
-			this.buttonAdd = new System.Windows.Forms.Button();
-			this.dataGridView = new System.Windows.Forms.DataGridView();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-			this.SuspendLayout();
-			// 
-			// labelSeries
-			// 
-			this.labelSeries.AutoSize = true;
-			this.labelSeries.Location = new System.Drawing.Point(22, 25);
-			this.labelSeries.Name = "labelSeries";
-			this.labelSeries.Size = new System.Drawing.Size(68, 13);
-			this.labelSeries.TabIndex = 11;
-			this.labelSeries.Text = "Поставщик:";
-			// 
-			// textBoxProvider
-			// 
-			this.textBoxProvider.Location = new System.Drawing.Point(96, 24);
-			this.textBoxProvider.MaxLength = 100;
-			this.textBoxProvider.Name = "textBoxProvider";
-			this.textBoxProvider.Size = new System.Drawing.Size(212, 20);
-			this.textBoxProvider.TabIndex = 10;
-			// 
-			// buttonDelete
-			// 
-			this.buttonDelete.Location = new System.Drawing.Point(395, 20);
-			this.buttonDelete.Name = "buttonDelete";
-			this.buttonDelete.Size = new System.Drawing.Size(75, 24);
-			this.buttonDelete.TabIndex = 9;
-			this.buttonDelete.Text = "Удалить";
-			this.buttonDelete.UseVisualStyleBackColor = true;
-			this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
-			// 
-			// buttonChange
-			// 
-			this.buttonChange.Location = new System.Drawing.Point(476, 20);
-			this.buttonChange.Name = "buttonChange";
-			this.buttonChange.Size = new System.Drawing.Size(95, 23);
-			this.buttonChange.TabIndex = 8;
-			this.buttonChange.Text = "Редактировать";
-			this.buttonChange.UseVisualStyleBackColor = true;
-			this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
-			// 
-			// buttonAdd
-			// 
-			this.buttonAdd.Location = new System.Drawing.Point(314, 22);
-			this.buttonAdd.Name = "buttonAdd";
-			this.buttonAdd.Size = new System.Drawing.Size(75, 23);
-			this.buttonAdd.TabIndex = 7;
-			this.buttonAdd.Text = "Добавить";
-			this.buttonAdd.UseVisualStyleBackColor = true;
-			this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
-			// 
-			// dataGridView
-			// 
-			this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView.Location = new System.Drawing.Point(22, 65);
-			this.dataGridView.Name = "dataGridView";
-			this.dataGridView.ReadOnly = true;
-			this.dataGridView.Size = new System.Drawing.Size(549, 217);
-			this.dataGridView.TabIndex = 6;
-			// 
-			// FormProviders
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(608, 304);
-			this.Controls.Add(this.labelSeries);
-			this.Controls.Add(this.textBoxProvider);
-			this.Controls.Add(this.buttonDelete);
-			this.Controls.Add(this.buttonChange);
-			this.Controls.Add(this.buttonAdd);
-			this.Controls.Add(this.dataGridView);
-			this.Name = "FormProviders";
-			this.Text = "Поставщики";
-			this.Load += new System.EventHandler(this.FormProviders_Load);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProviders));
+            this.labelSeries = new System.Windows.Forms.Label();
+            this.textBoxProvider = new System.Windows.Forms.TextBox();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonChange = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // labelSeries
+            // 
+            resources.ApplyResources(this.labelSeries, "labelSeries");
+            this.labelSeries.Name = "labelSeries";
+            // 
+            // textBoxProvider
+            // 
+            resources.ApplyResources(this.textBoxProvider, "textBoxProvider");
+            this.textBoxProvider.Name = "textBoxProvider";
+            // 
+            // buttonDelete
+            // 
+            resources.ApplyResources(this.buttonDelete, "buttonDelete");
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // buttonChange
+            // 
+            resources.ApplyResources(this.buttonChange, "buttonChange");
+            this.buttonChange.Name = "buttonChange";
+            this.buttonChange.UseVisualStyleBackColor = true;
+            this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
+            // 
+            // buttonAdd
+            // 
+            resources.ApplyResources(this.buttonAdd, "buttonAdd");
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // dataGridView
+            // 
+            resources.ApplyResources(this.dataGridView, "dataGridView");
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
+            // 
+            // FormProviders
+            // 
+            resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelSeries);
+            this.Controls.Add(this.textBoxProvider);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.buttonChange);
+            this.Controls.Add(this.buttonAdd);
+            this.Controls.Add(this.dataGridView);
+            this.Name = "FormProviders";
+            this.Load += new System.EventHandler(this.FormProviders_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

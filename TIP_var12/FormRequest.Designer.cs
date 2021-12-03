@@ -29,6 +29,7 @@ namespace TIP_var12
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRequest));
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxCar = new System.Windows.Forms.ComboBox();
@@ -43,95 +44,64 @@ namespace TIP_var12
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 101);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 13);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Автомобиль";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 42);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Дата";
             // 
             // comboBoxCar
             // 
+            resources.ApplyResources(this.comboBoxCar, "comboBoxCar");
             this.comboBoxCar.FormattingEnabled = true;
-            this.comboBoxCar.Location = new System.Drawing.Point(110, 98);
             this.comboBoxCar.Name = "comboBoxCar";
-            this.comboBoxCar.Size = new System.Drawing.Size(200, 21);
-            this.comboBoxCar.TabIndex = 11;
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(110, 36);
+            resources.ApplyResources(this.dateTimePicker, "dateTimePicker");
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker.TabIndex = 10;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(35, 133);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 13);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "Количество ";
             // 
             // textBoxCout
             // 
-            this.textBoxCout.Location = new System.Drawing.Point(110, 130);
+            resources.ApplyResources(this.textBoxCout, "textBoxCout");
             this.textBoxCout.Name = "textBoxCout";
-            this.textBoxCout.Size = new System.Drawing.Size(200, 20);
-            this.textBoxCout.TabIndex = 23;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(217, 167);
+            resources.ApplyResources(this.buttonCancel, "buttonCancel");
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(93, 23);
-            this.buttonCancel.TabIndex = 26;
-            this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(110, 167);
+            resources.ApplyResources(this.buttonSave, "buttonSave");
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(85, 23);
-            this.buttonSave.TabIndex = 25;
-            this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 68);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 13);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "Покупатель";
             // 
             // comboBoxCustomer
             // 
+            resources.ApplyResources(this.comboBoxCustomer, "comboBoxCustomer");
             this.comboBoxCustomer.FormattingEnabled = true;
-            this.comboBoxCustomer.Location = new System.Drawing.Point(110, 65);
             this.comboBoxCustomer.Name = "comboBoxCustomer";
-            this.comboBoxCustomer.Size = new System.Drawing.Size(200, 21);
-            this.comboBoxCustomer.TabIndex = 27;
             // 
             // FormRequest
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 213);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxCustomer);
             this.Controls.Add(this.buttonCancel);
@@ -143,8 +113,6 @@ namespace TIP_var12
             this.Controls.Add(this.comboBoxCar);
             this.Controls.Add(this.dateTimePicker);
             this.Name = "FormRequest";
-            this.RightToLeftLayout = true;
-            this.Text = "Заявка";
             this.Load += new System.EventHandler(this.FormRequest_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

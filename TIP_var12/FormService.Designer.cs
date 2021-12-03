@@ -29,106 +29,79 @@ namespace TIP_var12
         /// </summary>
         private void InitializeComponent()
         {
-			this.buttonCancel = new System.Windows.Forms.Button();
-			this.buttonSave = new System.Windows.Forms.Button();
-			this.comboBoxSubs = new System.Windows.Forms.ComboBox();
-			this.labelSubdivision = new System.Windows.Forms.Label();
-			this.textBoxPrice = new System.Windows.Forms.TextBox();
-			this.labelName = new System.Windows.Forms.Label();
-			this.textBoxName = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// buttonCancel
-			// 
-			this.buttonCancel.Location = new System.Drawing.Point(249, 167);
-			this.buttonCancel.Name = "buttonCancel";
-			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-			this.buttonCancel.TabIndex = 23;
-			this.buttonCancel.Text = "Отмена";
-			this.buttonCancel.UseVisualStyleBackColor = true;
-			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-			// 
-			// buttonSave
-			// 
-			this.buttonSave.Location = new System.Drawing.Point(154, 167);
-			this.buttonSave.Name = "buttonSave";
-			this.buttonSave.Size = new System.Drawing.Size(75, 23);
-			this.buttonSave.TabIndex = 22;
-			this.buttonSave.Text = "Сохранить";
-			this.buttonSave.UseVisualStyleBackColor = true;
-			this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-			// 
-			// comboBoxSubs
-			// 
-			this.comboBoxSubs.FormattingEnabled = true;
-			this.comboBoxSubs.Location = new System.Drawing.Point(154, 119);
-			this.comboBoxSubs.Name = "comboBoxSubs";
-			this.comboBoxSubs.Size = new System.Drawing.Size(170, 21);
-			this.comboBoxSubs.TabIndex = 21;
-			// 
-			// labelSubdivision
-			// 
-			this.labelSubdivision.AutoSize = true;
-			this.labelSubdivision.Location = new System.Drawing.Point(36, 122);
-			this.labelSubdivision.Name = "labelSubdivision";
-			this.labelSubdivision.Size = new System.Drawing.Size(87, 13);
-			this.labelSubdivision.TabIndex = 20;
-			this.labelSubdivision.Text = "Подразделение";
-			// 
-			// textBoxPrice
-			// 
-			this.textBoxPrice.Location = new System.Drawing.Point(154, 70);
-			this.textBoxPrice.MaxLength = 18;
-			this.textBoxPrice.Name = "textBoxPrice";
-			this.textBoxPrice.Size = new System.Drawing.Size(170, 20);
-			this.textBoxPrice.TabIndex = 19;
-			this.textBoxPrice.Tag = "decimal";
-			// 
-			// labelName
-			// 
-			this.labelName.AutoSize = true;
-			this.labelName.Location = new System.Drawing.Point(33, 70);
-			this.labelName.Name = "labelName";
-			this.labelName.Size = new System.Drawing.Size(62, 13);
-			this.labelName.TabIndex = 18;
-			this.labelName.Text = "Стоимость";
-			// 
-			// textBoxName
-			// 
-			this.textBoxName.Location = new System.Drawing.Point(154, 33);
-			this.textBoxName.MaxLength = 100;
-			this.textBoxName.Name = "textBoxName";
-			this.textBoxName.Size = new System.Drawing.Size(170, 20);
-			this.textBoxName.TabIndex = 25;
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(33, 33);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(57, 13);
-			this.label2.TabIndex = 24;
-			this.label2.Text = "Название";
-			// 
-			// FormService
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(379, 223);
-			this.Controls.Add(this.textBoxName);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.buttonCancel);
-			this.Controls.Add(this.buttonSave);
-			this.Controls.Add(this.comboBoxSubs);
-			this.Controls.Add(this.labelSubdivision);
-			this.Controls.Add(this.textBoxPrice);
-			this.Controls.Add(this.labelName);
-			this.Name = "FormService";
-			this.Text = "Услуга";
-			this.Load += new System.EventHandler(this.FormService_Load);
-			this.ResumeLayout(false);
-			this.PerformLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormService));
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.comboBoxSubs = new System.Windows.Forms.ComboBox();
+            this.labelSubdivision = new System.Windows.Forms.Label();
+            this.textBoxPrice = new System.Windows.Forms.TextBox();
+            this.labelName = new System.Windows.Forms.Label();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // buttonCancel
+            // 
+            resources.ApplyResources(this.buttonCancel, "buttonCancel");
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // buttonSave
+            // 
+            resources.ApplyResources(this.buttonSave, "buttonSave");
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // comboBoxSubs
+            // 
+            resources.ApplyResources(this.comboBoxSubs, "comboBoxSubs");
+            this.comboBoxSubs.FormattingEnabled = true;
+            this.comboBoxSubs.Name = "comboBoxSubs";
+            // 
+            // labelSubdivision
+            // 
+            resources.ApplyResources(this.labelSubdivision, "labelSubdivision");
+            this.labelSubdivision.Name = "labelSubdivision";
+            // 
+            // textBoxPrice
+            // 
+            resources.ApplyResources(this.textBoxPrice, "textBoxPrice");
+            this.textBoxPrice.Name = "textBoxPrice";
+            this.textBoxPrice.Tag = "decimal";
+            // 
+            // labelName
+            // 
+            resources.ApplyResources(this.labelName, "labelName");
+            this.labelName.Name = "labelName";
+            // 
+            // textBoxName
+            // 
+            resources.ApplyResources(this.textBoxName, "textBoxName");
+            this.textBoxName.Name = "textBoxName";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // FormService
+            // 
+            resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.buttonCancel);
+            this.Controls.Add(this.buttonSave);
+            this.Controls.Add(this.comboBoxSubs);
+            this.Controls.Add(this.labelSubdivision);
+            this.Controls.Add(this.textBoxPrice);
+            this.Controls.Add(this.labelName);
+            this.Name = "FormService";
+            this.Load += new System.EventHandler(this.FormService_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

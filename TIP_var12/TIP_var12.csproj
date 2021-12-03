@@ -315,64 +315,133 @@
     <EmbeddedResource Include="FormAccountCharts.resx">
       <DependentUpon>FormAccountCharts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAccountCharts.zh.resx">
+      <DependentUpon>FormAccountCharts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAddService.resx">
+      <DependentUpon>FormAddService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddService.zh.resx">
       <DependentUpon>FormAddService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCar.resx">
       <DependentUpon>FormCar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormCar.zh.resx">
+      <DependentUpon>FormCar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCars.resx">
+      <DependentUpon>FormCars.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCars.zh.resx">
       <DependentUpon>FormCars.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCustomers.resx">
       <DependentUpon>FormCustomers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormCustomers.zh.resx">
+      <DependentUpon>FormCustomers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.ru.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.smj.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.zh.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPostingJournal.resx">
       <DependentUpon>FormPostingJournal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPostingJournal.zh.resx">
+      <DependentUpon>FormPostingJournal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormProviders.resx">
+      <DependentUpon>FormProviders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProviders.zh.resx">
       <DependentUpon>FormProviders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPurchaseDoc.resx">
       <DependentUpon>FormPurchaseDoc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPurchaseDoc.zh.resx">
+      <DependentUpon>FormPurchaseDoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPurchaseDocs.resx">
+      <DependentUpon>FormPurchaseDocs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPurchaseDocs.zh.resx">
       <DependentUpon>FormPurchaseDocs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormReport.resx">
       <DependentUpon>FormReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormReport.zh.resx">
+      <DependentUpon>FormReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormReportPJ.resx">
+      <DependentUpon>FormReportPJ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReportPJ.zh.resx">
       <DependentUpon>FormReportPJ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRequest.resx">
       <DependentUpon>FormRequest.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormRequest.zh.resx">
+      <DependentUpon>FormRequest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormRequests.resx">
+      <DependentUpon>FormRequests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRequests.zh.resx">
       <DependentUpon>FormRequests.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSaleDoc.resx">
       <DependentUpon>FormSaleDoc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormSaleDoc.zh.resx">
+      <DependentUpon>FormSaleDoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSaleDocs.resx">
+      <DependentUpon>FormSaleDocs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSaleDocs.zh.resx">
       <DependentUpon>FormSaleDocs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSeries.resx">
       <DependentUpon>FormSeries.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormSeries.zh.resx">
+      <DependentUpon>FormSeries.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormService.resx">
+      <DependentUpon>FormService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormService.zh.resx">
       <DependentUpon>FormService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormServices.resx">
       <DependentUpon>FormServices.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormServices.zh.resx">
+      <DependentUpon>FormServices.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSubdivision.resx">
       <DependentUpon>FormSubdivision.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormSubdivision.zh.resx">
+      <DependentUpon>FormSubdivision.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSubdivisions.resx">
+      <DependentUpon>FormSubdivisions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSubdivisions.zh.resx">
       <DependentUpon>FormSubdivisions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

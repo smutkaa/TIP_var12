@@ -29,6 +29,7 @@ namespace TIP_var12
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCar));
             this.labelName = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.labelSeries = new System.Windows.Forms.Label();
@@ -39,63 +40,43 @@ namespace TIP_var12
             // 
             // labelName
             // 
-            this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(28, 34);
+            resources.ApplyResources(this.labelName, "labelName");
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(57, 13);
-            this.labelName.TabIndex = 0;
-            this.labelName.Text = "Название";
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(149, 34);
-            this.textBoxName.MaxLength = 50;
+            resources.ApplyResources(this.textBoxName, "textBoxName");
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(170, 20);
-            this.textBoxName.TabIndex = 3;
             // 
             // labelSeries
             // 
-            this.labelSeries.AutoSize = true;
-            this.labelSeries.Location = new System.Drawing.Point(31, 79);
+            resources.ApplyResources(this.labelSeries, "labelSeries");
             this.labelSeries.Name = "labelSeries";
-            this.labelSeries.Size = new System.Drawing.Size(38, 13);
-            this.labelSeries.TabIndex = 6;
-            this.labelSeries.Text = "Серия";
             // 
             // comboBoxSeries
             // 
+            resources.ApplyResources(this.comboBoxSeries, "comboBoxSeries");
             this.comboBoxSeries.FormattingEnabled = true;
-            this.comboBoxSeries.Location = new System.Drawing.Point(149, 79);
             this.comboBoxSeries.Name = "comboBoxSeries";
-            this.comboBoxSeries.Size = new System.Drawing.Size(170, 21);
-            this.comboBoxSeries.TabIndex = 7;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(244, 123);
+            resources.ApplyResources(this.buttonCancel, "buttonCancel");
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 19;
-            this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(149, 123);
+            resources.ApplyResources(this.buttonSave, "buttonSave");
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 18;
-            this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // FormCar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(359, 171);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.comboBoxSeries);
@@ -103,7 +84,6 @@ namespace TIP_var12
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.labelName);
             this.Name = "FormCar";
-            this.Text = "Автомобиль";
             this.Load += new System.EventHandler(this.FormCar_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

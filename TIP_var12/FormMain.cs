@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,13 +18,12 @@ namespace TIP_var12
 		public new IUnityContainer Container { get; set; }
 		public FormMain()
 		{
-			InitializeComponent();
+            System.Threading.Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
+            System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
+            InitializeComponent();
 		}
 
-		private void Main_Load(object sender, EventArgs e)
-		{
-
-		}
+		
 
 		private void планСчетовToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -101,6 +101,28 @@ namespace TIP_var12
         {
             var form = Container.Resolve<FormReport>();
             form.ShowDialog();
+        }
+
+        private void сменитьЯзыкToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "ru-RU")
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("zh-hk");
+                System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("zh-hk");
+
+                Properties.Settings.Default.Language = "zh-hk";
+                Properties.Settings.Default.Save();
+                Application.Restart();
+
+            }
+            else
+            {
+                System.Threading.Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("ru-RU");
+                System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("ru-RU");
+                Properties.Settings.Default.Language = "ru-RU";
+                Properties.Settings.Default.Save();
+                Application.Restart();
+            }
         }
     }
 }

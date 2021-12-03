@@ -29,6 +29,7 @@ namespace TIP_var12
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPurchaseDocs));
             this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,155 +51,104 @@ namespace TIP_var12
             // 
             // dateTimePickerFrom
             // 
-            this.dateTimePickerFrom.Location = new System.Drawing.Point(101, 24);
+            resources.ApplyResources(this.dateTimePickerFrom, "dateTimePickerFrom");
             this.dateTimePickerFrom.Name = "dateTimePickerFrom";
-            this.dateTimePickerFrom.Size = new System.Drawing.Size(150, 20);
-            this.dateTimePickerFrom.TabIndex = 0;
             // 
             // dateTimePickerTo
             // 
-            this.dateTimePickerTo.Location = new System.Drawing.Point(301, 24);
+            resources.ApplyResources(this.dateTimePickerTo, "dateTimePickerTo");
             this.dateTimePickerTo.Name = "dateTimePickerTo";
-            this.dateTimePickerTo.Size = new System.Drawing.Size(151, 20);
-            this.dateTimePickerTo.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 30);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Период с ";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(266, 30);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(19, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "по";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 102);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Журнал поступления";
             // 
             // dataGridView1
             // 
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(32, 128);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(547, 300);
-            this.dataGridView1.TabIndex = 5;
             // 
             // buttonAll
             // 
-            this.buttonAll.Location = new System.Drawing.Point(382, 59);
+            resources.ApplyResources(this.buttonAll, "buttonAll");
             this.buttonAll.Name = "buttonAll";
-            this.buttonAll.Size = new System.Drawing.Size(75, 23);
-            this.buttonAll.TabIndex = 6;
-            this.buttonAll.Text = "Отменить";
             this.buttonAll.UseVisualStyleBackColor = true;
             this.buttonAll.Click += new System.EventHandler(this.buttonAll_Click);
             // 
             // buttonFiltred
             // 
-            this.buttonFiltred.Location = new System.Drawing.Point(301, 59);
+            resources.ApplyResources(this.buttonFiltred, "buttonFiltred");
             this.buttonFiltred.Name = "buttonFiltred";
-            this.buttonFiltred.Size = new System.Drawing.Size(75, 23);
-            this.buttonFiltred.TabIndex = 7;
-            this.buttonFiltred.Text = "Поиск";
             this.buttonFiltred.UseVisualStyleBackColor = true;
             this.buttonFiltred.Click += new System.EventHandler(this.buttonFiltred_Click);
             // 
             // comboBoxProvider
             // 
+            resources.ApplyResources(this.comboBoxProvider, "comboBoxProvider");
             this.comboBoxProvider.FormattingEnabled = true;
-            this.comboBoxProvider.Location = new System.Drawing.Point(101, 61);
             this.comboBoxProvider.Name = "comboBoxProvider";
-            this.comboBoxProvider.Size = new System.Drawing.Size(140, 21);
-            this.comboBoxProvider.TabIndex = 8;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 64);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Поставщик";
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(600, 214);
+            resources.ApplyResources(this.buttonDelete, "buttonDelete");
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(83, 23);
-            this.buttonDelete.TabIndex = 12;
-            this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonChange
             // 
-            this.buttonChange.Location = new System.Drawing.Point(600, 171);
+            resources.ApplyResources(this.buttonChange, "buttonChange");
             this.buttonChange.Name = "buttonChange";
-            this.buttonChange.Size = new System.Drawing.Size(83, 23);
-            this.buttonChange.TabIndex = 11;
-            this.buttonChange.Text = "Изменить";
             this.buttonChange.UseVisualStyleBackColor = true;
             this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(600, 128);
+            resources.ApplyResources(this.buttonAdd, "buttonAdd");
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(83, 23);
-            this.buttonAdd.TabIndex = 10;
-            this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // checkBox1
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(467, 26);
+            resources.ApplyResources(this.checkBox1, "checkBox1");
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(45, 17);
-            this.checkBox1.TabIndex = 13;
-            this.checkBox1.Text = "Все";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // checkBox2
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(250, 61);
+            resources.ApplyResources(this.checkBox2, "checkBox2");
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(45, 17);
-            this.checkBox2.TabIndex = 14;
-            this.checkBox2.Text = "Все";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // buttonPostingJournal
             // 
-            this.buttonPostingJournal.Location = new System.Drawing.Point(600, 405);
+            resources.ApplyResources(this.buttonPostingJournal, "buttonPostingJournal");
             this.buttonPostingJournal.Name = "buttonPostingJournal";
-            this.buttonPostingJournal.Size = new System.Drawing.Size(75, 23);
-            this.buttonPostingJournal.TabIndex = 15;
-            this.buttonPostingJournal.Text = "Проводки";
             this.buttonPostingJournal.UseVisualStyleBackColor = true;
             this.buttonPostingJournal.Click += new System.EventHandler(this.buttonPostingJournal_Click);
             // 
             // FormPurchaseDocs
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 461);
             this.Controls.Add(this.buttonPostingJournal);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
@@ -216,7 +166,6 @@ namespace TIP_var12
             this.Controls.Add(this.dateTimePickerTo);
             this.Controls.Add(this.dateTimePickerFrom);
             this.Name = "FormPurchaseDocs";
-            this.Text = "Документы закупок";
             this.Load += new System.EventHandler(this.FormPurchaseDocs_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

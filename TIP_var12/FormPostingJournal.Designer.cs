@@ -29,6 +29,7 @@ namespace TIP_var12
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPostingJournal));
             this.buttonFiltred = new System.Windows.Forms.Button();
             this.buttonAll = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,79 +43,55 @@ namespace TIP_var12
             // 
             // buttonFiltred
             // 
-            this.buttonFiltred.Location = new System.Drawing.Point(507, 31);
+            resources.ApplyResources(this.buttonFiltred, "buttonFiltred");
             this.buttonFiltred.Name = "buttonFiltred";
-            this.buttonFiltred.Size = new System.Drawing.Size(75, 23);
-            this.buttonFiltred.TabIndex = 26;
-            this.buttonFiltred.Text = "Поиск";
             this.buttonFiltred.UseVisualStyleBackColor = true;
             this.buttonFiltred.Click += new System.EventHandler(this.buttonFiltred_Click);
             // 
             // buttonAll
             // 
-            this.buttonAll.Location = new System.Drawing.Point(588, 31);
+            resources.ApplyResources(this.buttonAll, "buttonAll");
             this.buttonAll.Name = "buttonAll";
-            this.buttonAll.Size = new System.Drawing.Size(75, 23);
-            this.buttonAll.TabIndex = 25;
-            this.buttonAll.Text = "Отменить";
             this.buttonAll.UseVisualStyleBackColor = true;
             this.buttonAll.Click += new System.EventHandler(this.buttonAll_Click);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(319, 37);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(19, 13);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "по";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(102, 37);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Период с ";
             // 
             // dateTimePickerTo
             // 
-            this.dateTimePickerTo.Location = new System.Drawing.Point(344, 31);
+            resources.ApplyResources(this.dateTimePickerTo, "dateTimePickerTo");
             this.dateTimePickerTo.Name = "dateTimePickerTo";
-            this.dateTimePickerTo.Size = new System.Drawing.Size(151, 20);
-            this.dateTimePickerTo.TabIndex = 22;
             // 
             // dateTimePickerFrom
             // 
-            this.dateTimePickerFrom.Location = new System.Drawing.Point(163, 31);
+            resources.ApplyResources(this.dateTimePickerFrom, "dateTimePickerFrom");
             this.dateTimePickerFrom.Name = "dateTimePickerFrom";
-            this.dateTimePickerFrom.Size = new System.Drawing.Size(150, 20);
-            this.dateTimePickerFrom.TabIndex = 21;
             // 
             // dataGridView1
             // 
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 72);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1148, 344);
-            this.dataGridView1.TabIndex = 27;
             // 
             // buttonDocument
             // 
-            this.buttonDocument.Location = new System.Drawing.Point(876, 32);
+            resources.ApplyResources(this.buttonDocument, "buttonDocument");
             this.buttonDocument.Name = "buttonDocument";
-            this.buttonDocument.Size = new System.Drawing.Size(170, 23);
-            this.buttonDocument.TabIndex = 29;
-            this.buttonDocument.Text = "Просмотреть документ";
             this.buttonDocument.UseVisualStyleBackColor = true;
             this.buttonDocument.Click += new System.EventHandler(this.buttonDocument_Click);
             // 
             // FormPostingJournal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1172, 437);
             this.Controls.Add(this.buttonDocument);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonFiltred);
@@ -124,7 +101,6 @@ namespace TIP_var12
             this.Controls.Add(this.dateTimePickerTo);
             this.Controls.Add(this.dateTimePickerFrom);
             this.Name = "FormPostingJournal";
-            this.Text = "Журнал проводок";
             this.Load += new System.EventHandler(this.FormPostingJournal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

@@ -29,6 +29,7 @@ namespace TIP_var12
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPurchaseDoc));
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.textBoxCout = new System.Windows.Forms.TextBox();
             this.textBoxPurchasePrice = new System.Windows.Forms.TextBox();
@@ -47,127 +48,84 @@ namespace TIP_var12
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(102, 37);
+            resources.ApplyResources(this.dateTimePicker, "dateTimePicker");
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker.TabIndex = 0;
             // 
             // textBoxCout
             // 
-            this.textBoxCout.Location = new System.Drawing.Point(102, 125);
+            resources.ApplyResources(this.textBoxCout, "textBoxCout");
             this.textBoxCout.Name = "textBoxCout";
-            this.textBoxCout.Size = new System.Drawing.Size(200, 20);
-            this.textBoxCout.TabIndex = 1;
             // 
             // textBoxPurchasePrice
             // 
-            this.textBoxPurchasePrice.Location = new System.Drawing.Point(461, 79);
+            resources.ApplyResources(this.textBoxPurchasePrice, "textBoxPurchasePrice");
             this.textBoxPurchasePrice.Name = "textBoxPurchasePrice";
-            this.textBoxPurchasePrice.Size = new System.Drawing.Size(131, 20);
-            this.textBoxPurchasePrice.TabIndex = 3;
             // 
             // textBoxRetailPrice
             // 
-            this.textBoxRetailPrice.Location = new System.Drawing.Point(461, 121);
+            resources.ApplyResources(this.textBoxRetailPrice, "textBoxRetailPrice");
             this.textBoxRetailPrice.Name = "textBoxRetailPrice";
-            this.textBoxRetailPrice.Size = new System.Drawing.Size(131, 20);
-            this.textBoxRetailPrice.TabIndex = 4;
             // 
             // comboBoxProvider
             // 
+            resources.ApplyResources(this.comboBoxProvider, "comboBoxProvider");
             this.comboBoxProvider.FormattingEnabled = true;
-            this.comboBoxProvider.Location = new System.Drawing.Point(102, 79);
             this.comboBoxProvider.Name = "comboBoxProvider";
-            this.comboBoxProvider.Size = new System.Drawing.Size(200, 21);
-            this.comboBoxProvider.TabIndex = 5;
             // 
             // comboBoxCar
             // 
+            resources.ApplyResources(this.comboBoxCar, "comboBoxCar");
             this.comboBoxCar.FormattingEnabled = true;
-            this.comboBoxCar.Location = new System.Drawing.Point(461, 37);
             this.comboBoxCar.Name = "comboBoxCar";
-            this.comboBoxCar.Size = new System.Drawing.Size(131, 21);
-            this.comboBoxCar.TabIndex = 6;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 40);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Дата";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 82);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Поставщик";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(362, 40);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Автомобиль";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(362, 82);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Закупочная цена";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(362, 124);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Розничная цена";
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(517, 171);
+            resources.ApplyResources(this.buttonCancel, "buttonCancel");
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 21;
-            this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(421, 171);
+            resources.ApplyResources(this.buttonSave, "buttonSave");
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 20;
-            this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 128);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 13);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "Количество ";
             // 
             // FormPurchaseDoc
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 226);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
@@ -183,7 +141,6 @@ namespace TIP_var12
             this.Controls.Add(this.textBoxCout);
             this.Controls.Add(this.dateTimePicker);
             this.Name = "FormPurchaseDoc";
-            this.Text = "Закупка";
             this.Load += new System.EventHandler(this.FormPurchaseDoc_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

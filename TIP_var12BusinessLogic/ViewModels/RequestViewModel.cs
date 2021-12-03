@@ -18,7 +18,6 @@ namespace TIP_var12BusinessLogic.ViewModels
         public string CarName { get; set; }
         [DisplayName("Покупатель")]
         public string CustomerName { get; set; }
-        public decimal PurchasePrice { get; set; }
         
     }
 }
