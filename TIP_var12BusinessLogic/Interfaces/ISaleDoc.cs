@@ -10,6 +10,7 @@ namespace TIP_var12BusinessLogic.Interfaces
     {
         List<SaleDocViewModel> GetFullList();
         List<SaleDocViewModel> GetFilteredList(SaleDocBindingModel model);
+        List<ReportRequestViewModel> GetFullListReport();
         SaleDocViewModel GetElement(SaleDocBindingModel model);
         int Insert(SaleDocBindingModel model);
         void Update(SaleDocBindingModel model);

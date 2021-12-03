@@ -44,6 +44,8 @@ namespace TIP_var12
             this.документзакупкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.журналПроводокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оборотносальдоваяПо41СчетуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выполненныеЗаявкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -164,9 +166,26 @@ namespace TIP_var12
             // 
             // отчетToolStripMenuItem
             // 
+            this.отчетToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.оборотносальдоваяПо41СчетуToolStripMenuItem,
+            this.выполненныеЗаявкиToolStripMenuItem});
             this.отчетToolStripMenuItem.Name = "отчетToolStripMenuItem";
             this.отчетToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.отчетToolStripMenuItem.Text = "Отчет";
+            // 
+            // оборотносальдоваяПо41СчетуToolStripMenuItem
+            // 
+            this.оборотносальдоваяПо41СчетуToolStripMenuItem.Name = "оборотносальдоваяПо41СчетуToolStripMenuItem";
+            this.оборотносальдоваяПо41СчетуToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.оборотносальдоваяПо41СчетуToolStripMenuItem.Text = "Оборотно-сальдовая по 41 счету";
+            this.оборотносальдоваяПо41СчетуToolStripMenuItem.Click += new System.EventHandler(this.оборотносальдоваяПо41СчетуToolStripMenuItem_Click);
+            // 
+            // выполненныеЗаявкиToolStripMenuItem
+            // 
+            this.выполненныеЗаявкиToolStripMenuItem.Name = "выполненныеЗаявкиToolStripMenuItem";
+            this.выполненныеЗаявкиToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.выполненныеЗаявкиToolStripMenuItem.Text = "Выполненные заявки";
+            this.выполненныеЗаявкиToolStripMenuItem.Click += new System.EventHandler(this.выполненныеЗаявкиToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -202,6 +221,8 @@ namespace TIP_var12
         private System.Windows.Forms.ToolStripMenuItem документзакупкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem заявкаToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem документToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem оборотносальдоваяПо41СчетуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem выполненныеЗаявкиToolStripMenuItem;
     }
 }
 

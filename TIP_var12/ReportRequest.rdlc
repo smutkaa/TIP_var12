@@ -64,7 +64,7 @@
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Times New Roman</FontFamily>
-                      <FontSize>12pt</FontSize>
+                      <FontSize>18pt</FontSize>
                       <FontWeight>Normal</FontWeight>
                       <TextDecoration>None</TextDecoration>
                       <Color>#000000</Color>
@@ -77,7 +77,7 @@
               </Paragraph>
             </Paragraphs>
             <Height>1.27cm</Height>
-            <Width>20.75625cm</Width>
+            <Width>25.78335cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -92,22 +92,22 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>3.10413cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.77882cm</Width>
+                  <Width>4.38295cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.77882cm</Width>
+                  <Width>4.38295cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.81465cm</Width>
+                  <Width>3.41878cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>3.10413cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>3.10413cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -532,9 +532,9 @@
             </TablixRowHierarchy>
             <DataSetName>DataSetRequest</DataSetName>
             <Top>3.31611cm</Top>
-            <Left>2.88396cm</Left>
+            <Left>1.13771cm</Left>
             <Height>2.73458cm</Height>
-            <Width>17.87229cm</Width>
+            <Width>21.49707cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -613,7 +613,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Sum(Fields!Sum.Value, "DataSetOrders")</Value>
+                    <Value>=Sum(Fields!Proceeds.Value, "DataSetRequest")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -637,10 +637,10 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>3.62804in</Height>
+        <Height>4.71137in</Height>
         <Style />
       </Body>
-      <Width>8.91134in</Width>
+      <Width>10.15093in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>

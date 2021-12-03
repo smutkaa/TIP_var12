@@ -33,6 +33,29 @@ namespace TIP_var12Database.Implements
                .ToList();
             }
         }
+        public List<ReportRequestViewModel> GetFullListReport()
+        {
+            using (var context = new mydbContext())
+            {
+                return context.Saledocs
+               .Include(rec => rec.Requests)
+               .ThenInclude(rec => rec.Car)
+               .Include(rec => rec.Saleservices)
+               .ThenInclude(rec => rec.Services)
+               .ToList()
+               .Select(rec => new ReportRequestViewModel
+               {
+                   Request = Convert.ToString(rec.Requestsid),
+                   Item = rec.Requests.Car.Name,
+                   Count = rec.Requests.Quantity,
+                   Retailprice = rec.Requests.Quantity * rec.Requests.Car.Retailprice,
+                   Purchaseprice = rec.Requests.Quantity * rec.Requests.Car.Purchaseprice,
+                   Proceeds = (rec.Requests.Quantity * rec.Requests.Car.Retailprice) - rec.Requests.Quantity * rec.Requests.Car.Purchaseprice,
+                   Services = rec.Saleservices.ToDictionary(recPC => recPC.Saleservicesid, recPC => (recPC.Services?.Name, recPC.Number, recPC.Services.Price)),
+               })
+               .ToList();
+            }
+        }
         public List<SaleDocViewModel> GetFilteredList(SaleDocBindingModel model)
         {
             if (model == null)

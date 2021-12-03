@@ -71,6 +71,119 @@ namespace TIP_var12Database.Implements
                  .ToList();
             }
         }
+       public List<ReportCarsViewModel> GetReportList(PostingJournalBindingModel model)
+       {
+           if (model == null)
+           {
+               return null;
+           }
+
+           using (var context = new mydbContext())
+           {
+                var fullPurchase = context.Postingjournal
+                    .Where(rec => (rec.Date >= model.DateFrom && rec.Date <= model.DateTo && rec.Debitaccount == model.Debitaccount))
+                    .Select(recPJ => new PostingJournalViewModel
+                    {
+                        Subcontodebit1 = recPJ.Subcontodebit1,
+                        Subcontodebit2 = recPJ.Subcontodebit2,
+                        Count = recPJ.Count,
+                        Total = recPJ.Total
+                    }).ToList()
+                    .GroupBy(t => t.Subcontodebit1)
+                                  .Select(recPJ => new PostingJournalViewModel
+                                  {
+                                      Subcontodebit1 = recPJ.Select(a => a.Subcontodebit1).FirstOrDefault(),
+                                      Subcontodebit2 = recPJ.Select(a => a.Subcontodebit2).FirstOrDefault(),
+                                      Count = recPJ.Sum(a => a.Count),
+                                      Total = recPJ.Sum(a => a.Total)
+                                  }).ToList();
+                var fullSale = context.Postingjournal
+                     .Where(rec => (rec.Date >= model.DateFrom && rec.Date <= model.DateTo && rec.Creditaccount == model.Creditaccount))
+                     .Select(recPJ => new PostingJournalViewModel
+                     {
+                         Subcontocredit1 = recPJ.Subcontocredit1,
+                         Subcontocredit2 = recPJ.Subcontocredit2,
+                         Count = recPJ.Count,
+                         Total = recPJ.Total
+                     }).ToList()
+                     .GroupBy(t => t.Subcontodebit1)
+                     .Select(recPJ => new PostingJournalViewModel
+                      {
+                          Subcontocredit1 = recPJ.Select(a => a.Subcontocredit1).FirstOrDefault(),
+                          Subcontocredit2 = recPJ.Select(a => a.Subcontocredit2).FirstOrDefault(),
+                          Count = recPJ.Sum(a => a.Count),
+                          Total = recPJ.Sum(a => a.Total)
+                      }).ToList();
+                var result = from pur in fullPurchase
+                             from sale in fullSale.Where(x => pur.Subcontodebit1 == x.Subcontocredit1).DefaultIfEmpty( new PostingJournalViewModel { Total = 0})
+                             select new ReportCarsViewModel
+                             {
+                                 CarName = pur.Subcontodebit1,
+                                 Series = pur.Subcontodebit2,
+                                 Count = (int)pur.Count,
+                                 Receipt = pur.Total,
+                                 Сonsumption = sale.Total
+                             };
+              
+                var fullBeforePurchase = context.Postingjournal
+                  .Where(rec => (rec.Date < model.DateFrom && rec.Debitaccount == model.Debitaccount))
+                  
+                  .Select(recPJ => new PostingJournalViewModel
+                  {
+                      Subcontodebit1 = recPJ.Subcontodebit1,
+                      Subcontodebit2 = recPJ.Subcontodebit2,
+                      Total = recPJ.Total
+                  }).ToList()
+                   .GroupBy(t => t.Subcontodebit1)
+                   .Select(recPJ => new PostingJournalViewModel
+                   {
+                       Subcontodebit1 = recPJ.Select(a => a.Subcontodebit1).FirstOrDefault(),
+                       Subcontodebit2 = recPJ.Select(a => a.Subcontodebit2).FirstOrDefault(),
+                       Total = recPJ.Sum(a => a.Total)
+                   }).ToList();
+
+                var fullBeforeSale = context.Postingjournal
+                  .Where(rec => (rec.Date < model.DateFrom && rec.Creditaccount == model.Creditaccount))
+                 
+                  .Select(recPJ => new PostingJournalViewModel
+                  {
+                      Subcontocredit1 = recPJ.Subcontocredit1,
+                      Subcontocredit2 = recPJ.Subcontocredit2,
+                      Total = recPJ.Total
+                  }).ToList()
+                   .GroupBy(t => t.Subcontodebit1)
+                   .Select(recPJ => new PostingJournalViewModel
+                   {
+                       Subcontocredit1 = recPJ.Select(a => a.Subcontocredit1).FirstOrDefault(),
+                       Subcontocredit2 = recPJ.Select(a => a.Subcontocredit2).FirstOrDefault(),
+                       Total = recPJ.Sum(a => a.Total)
+                   }).ToList();
+                var resultBefore = from pur in fullBeforePurchase
+                                   from sale in fullBeforeSale.Where(x => pur.Subcontodebit1 == x.Subcontocredit1).DefaultIfEmpty(new PostingJournalViewModel { Total = 0 })
+                             select new ReportCarsViewModel
+                             {
+                                 CarName = pur.Subcontodebit1,
+                                 StartBalance = pur.Total - sale.Total
+                             };
+                resultBefore.ToList();
+                result.ToList();
+
+                var list = from res in result
+                           from resbef in resultBefore.Where(x => res.CarName == x.CarName).DefaultIfEmpty(new ReportCarsViewModel { StartBalance = 0 })
+                           select new ReportCarsViewModel
+                           {
+                               IdCars = context.Cars.FirstOrDefault(rec => rec.Name == res.CarName).Carid,
+                               CarName = res.CarName,
+                               Series = res.Series,
+                               Count = res.Count,
+                               Receipt = res.Receipt,
+                               Сonsumption = res.Сonsumption,
+                               StartBalance = resbef.StartBalance,
+                               EndBalance = (resbef.StartBalance + res.Receipt) - res.Сonsumption
+                           };
+                return list.ToList();
+           }
+       }
         public List<PostingJournalBindingModel> GetDocumentNotes(PostingJournalBindingModel model)
         {
             if (model == null)

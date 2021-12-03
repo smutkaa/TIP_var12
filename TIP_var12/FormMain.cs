@@ -90,5 +90,17 @@ namespace TIP_var12
             var form = Container.Resolve<FormPostingJournal>();
             form.ShowDialog();
         }
+
+        private void оборотносальдоваяПо41СчетуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReportPJ>();
+            form.ShowDialog();
+        }
+
+        private void выполненныеЗаявкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReport>();
+            form.ShowDialog();
+        }
     }
 }

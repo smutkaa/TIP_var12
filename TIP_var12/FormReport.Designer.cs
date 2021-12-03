@@ -33,14 +33,15 @@ namespace TIP_var12
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.buttonForm = new System.Windows.Forms.Button();
+            this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(321, 33);
+            this.label2.Location = new System.Drawing.Point(386, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(19, 13);
             this.label2.TabIndex = 7;
@@ -49,7 +50,7 @@ namespace TIP_var12
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(84, 33);
+            this.label1.Location = new System.Drawing.Point(149, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 6;
@@ -57,49 +58,61 @@ namespace TIP_var12
             // 
             // dateTimePickerTo
             // 
-            this.dateTimePickerTo.Location = new System.Drawing.Point(356, 27);
+            this.dateTimePickerTo.Location = new System.Drawing.Point(421, 31);
             this.dateTimePickerTo.Name = "dateTimePickerTo";
             this.dateTimePickerTo.Size = new System.Drawing.Size(151, 20);
             this.dateTimePickerTo.TabIndex = 5;
             // 
             // dateTimePickerFrom
             // 
-            this.dateTimePickerFrom.Location = new System.Drawing.Point(156, 27);
+            this.dateTimePickerFrom.Location = new System.Drawing.Point(221, 31);
             this.dateTimePickerFrom.Name = "dateTimePickerFrom";
             this.dateTimePickerFrom.Size = new System.Drawing.Size(150, 20);
             this.dateTimePickerFrom.TabIndex = 4;
             // 
-            // button1
+            // buttonForm
             // 
-            this.button1.Location = new System.Drawing.Point(546, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(207, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Сформировать";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonForm.Location = new System.Drawing.Point(611, 28);
+            this.buttonForm.Name = "buttonForm";
+            this.buttonForm.Size = new System.Drawing.Size(164, 23);
+            this.buttonForm.TabIndex = 8;
+            this.buttonForm.Text = "Сформировать";
+            this.buttonForm.UseVisualStyleBackColor = true;
+            this.buttonForm.Click += new System.EventHandler(this.buttonForm_Click);
             // 
-            // reportViewer1
+            // reportViewer
             // 
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "TIP_var12.ReportRequest.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(67, 71);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(686, 359);
-            this.reportViewer1.TabIndex = 10;
+            this.reportViewer.LocalReport.ReportEmbeddedResource = "TIP_var12.ReportRequest.rdlc";
+            this.reportViewer.Location = new System.Drawing.Point(12, 69);
+            this.reportViewer.Name = "reportViewer";
+            this.reportViewer.ServerReport.BearerToken = null;
+            this.reportViewer.Size = new System.Drawing.Size(936, 359);
+            this.reportViewer.TabIndex = 10;
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(784, 27);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(164, 23);
+            this.buttonSave.TabIndex = 11;
+            this.buttonSave.Text = "Скачать отчет";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // FormReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.reportViewer1);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(980, 450);
+            this.Controls.Add(this.buttonSave);
+            this.Controls.Add(this.reportViewer);
+            this.Controls.Add(this.buttonForm);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePickerTo);
             this.Controls.Add(this.dateTimePickerFrom);
             this.Name = "FormReport";
-            this.Text = "FormReport";
+            this.Text = "Отчет по заявкам";
             this.Load += new System.EventHandler(this.FormReport_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -112,7 +125,8 @@ namespace TIP_var12
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePickerTo;
         private System.Windows.Forms.DateTimePicker dateTimePickerFrom;
-        private System.Windows.Forms.Button button1;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.Button buttonForm;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer;
+        private System.Windows.Forms.Button buttonSave;
     }
 }

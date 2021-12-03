@@ -52,7 +52,8 @@ namespace TIP_var12Database.Implements
                     Carid = doc.Carid,
                     CarName = doc.Car.Name,
                     Customerid = doc.Customerid,
-                    CustomerName = doc.Customer.Fio
+                    CustomerName = doc.Customer.Fio,
+                    PurchasePrice = doc.Car.Purchaseprice
                 } : null;
             }
         }

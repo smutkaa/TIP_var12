@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TIP_var12BusinessLogic.ViewModels
+namespace TIP_var12BusinessLogic.BindingModel
 {
-    public class ReportRequestViewModel
+    public class ReportRequestBindingModel
     {
         public string Request { get; set; }
         public string Item { get; set; }
@@ -12,7 +12,5 @@ namespace TIP_var12BusinessLogic.ViewModels
         public decimal Purchaseprice { get; set; }
         public decimal Retailprice { get; set; }
         public decimal Proceeds { get; set; }
-        public Dictionary<int, (string, int, decimal)> Services { get; set; }
-       // public List<Tuple<string, int, decimal>> Services { get; set; }
     }
 }
